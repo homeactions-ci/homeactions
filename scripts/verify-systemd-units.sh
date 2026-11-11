@@ -12,13 +12,14 @@ root="$(mktemp -d)"
 trap 'rm -rf "$root"' EXIT
 
 # Installed unit names come from the renderer's own derive(), never re-typed here.
-names="$(node --input-type=module -e '
+# (Paths go in through the environment: passing render.mjs as an argument would make it argv[1] and run its CLI.)
+names="$(HA_RENDER="$here/../skills/homeactions/kit/render.mjs" HA_PROFILE="$profile" node --input-type=module -e '
   import { readFileSync } from "node:fs";
-  const { derive } = await import(process.argv[1]);
-  const d = derive(JSON.parse(readFileSync(process.argv[2], "utf8")));
+  const { derive } = await import(process.env.HA_RENDER);
+  const d = derive(JSON.parse(readFileSync(process.env.HA_PROFILE, "utf8")));
   console.log(`runner.service=${d.daemonLabel}.service`);
   console.log(`firewall.service=${d.firewallLabel}.service`);
-' "$here/../skills/homeactions/kit/render.mjs" "$profile")"
+')"
 
 mkdir -p "$root/etc/systemd/system"
 units=()
