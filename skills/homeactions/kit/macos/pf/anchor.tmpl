@@ -1,0 +1,29 @@
+# {{derived.pfAnchorFile}}: pf rules for the homeactions tenant {{tenant.user}} (uid {{tenant.uid}}) ONLY.
+# Every rule carries `user {{tenant.user}}`: pf matches it only against sockets owned by that uid, so no
+# other user's traffic can match anything here. Loaded into anchor "{{derived.pfAnchor}}", which the
+# stock `anchor "com.apple/*"` line of /etc/pf.conf evaluates, so /etc/pf.conf is never edited. The
+# loader {{tenant.rootDir}}/pf-load.sh (LaunchDaemon {{derived.firewallLabel}}) re-applies it at boot
+# and every 300 s. No set / scrub / nat / rdr lines: this anchor changes nothing machine-wide.
+
+tenant_ports = "{ {{derived.portsComma}} }"
+table <tenant_private> const { {{join isolation.privateRanges ", "}} }
+
+# 1. Loopback and this host's own addresses (macOS delivers both over lo0): the tenant's own ports
+#    only. Two passes, because each loopback packet crosses lo0 and the listener's replies leave from
+#    a tenant port. Every other local service (sshd, adb, other users' dev servers, system daemons)
+#    answers the tenant with a reset.
+pass out quick on lo0 proto tcp from any to any port $tenant_ports user {{tenant.user}} keep state
+pass out quick on lo0 proto tcp from any port $tenant_ports to any user {{tenant.user}} keep state
+block return out quick on lo0 proto { tcp, udp } from any to any user {{tenant.user}}
+
+# 2. Every private, link-local and CGNAT network (the LAN, bridges, VPN overlays). DNS to a private
+#    resolver stays open, because some resolvers bypass mDNSResponder.
+pass out quick proto { tcp, udp } from any to <tenant_private> port 53 user {{tenant.user}} keep state
+block return out quick proto { tcp, udp } from any to <tenant_private> user {{tenant.user}}
+
+# 3. The internet (GitHub, package registries, browser downloads), with state, so the replies are
+#    admitted by state before rule 4 is consulted.
+pass out quick proto { tcp, udp } from any to any user {{tenant.user}} keep state
+
+# 4. Nothing off-box may open a connection to a tenant listener, even one bound to 0.0.0.0.
+block drop in quick on ! lo0 proto { tcp, udp } from any to any user {{tenant.user}}

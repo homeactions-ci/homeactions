@@ -1,0 +1,8 @@
+[
+  { "template": "linux/provision.sh", "output": "host/provision.sh", "os": ["linux"], "mode": "0755" },
+  { "template": "linux/uninstall.sh", "output": "host/uninstall.sh", "os": ["linux"], "mode": "0755" },
+  { "template": "linux/systemd/runner.service.tmpl", "output": "host/systemd/runner.service", "os": ["linux"] },
+  { "template": "linux/systemd/firewall.service.tmpl", "output": "host/systemd/firewall.service", "os": ["linux"], "when": "isolation.network" },
+  { "template": "linux/nftables/tenant.nft.tmpl", "output": "host/nftables/tenant.nft", "os": ["linux"], "when": "isolation.network" },
+  { "template": "linux/nftables/nft-load.sh", "output": "host/nftables/nft-load.sh", "os": ["linux"], "when": "isolation.network", "mode": "0755" }
+]

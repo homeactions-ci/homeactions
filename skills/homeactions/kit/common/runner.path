@@ -1,0 +1,1 @@
+{{#each derived.serviceBins}}{{this}}:{{/each}}/usr/bin:/bin:/usr/sbin:/sbin

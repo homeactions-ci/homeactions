@@ -85,9 +85,20 @@ export function derive(profile) {
     otherAdmins: profile.host.otherAdmins ?? [],
     hasPostgres: Boolean(pg),
     hasRedis: Boolean(redis),
-    postgres: pg ? { ...pg, major: pg.version.split(".")[0], prefix: `${optDir}/postgresql-${pg.version.split(".")[0]}`, bin: `${optDir}/postgresql-${pg.version.split(".")[0]}/bin` } : null,
-    redis: redis ? { ...redis, prefix: `${optDir}/redis`, bin: `${optDir}/redis/bin` } : null,
+    postgres: pg ? { sourceSha256: "", ...pg, major: pg.version.split(".")[0], prefix: `${optDir}/postgresql-${pg.version.split(".")[0]}`, bin: `${optDir}/postgresql-${pg.version.split(".")[0]}/bin` } : null,
+    redis: redis ? { sourceSha256: "", ...redis, prefix: `${optDir}/redis`, bin: `${optDir}/redis/bin` } : null,
     serviceBins: [pg ? `${optDir}/postgresql-${pg.version.split(".")[0]}/bin` : null, redis ? `${optDir}/redis/bin` : null].filter(Boolean),
+    capsEnv: [
+      ["nextBuildCpus", "HOMEACTIONS_NEXT_BUILD_CPUS"],
+      ["turboConcurrency", "HOMEACTIONS_TURBO_CONCURRENCY"],
+      ["jestMaxWorkers", "HOMEACTIONS_JEST_MAX_WORKERS"],
+      ["playwrightWorkers", "HOMEACTIONS_PLAYWRIGHT_WORKERS"],
+    ]
+      .filter(([k]) => profile.caps[k] != null)
+      .map(([k, name]) => ({ name, value: profile.caps[k] })),
+    cotenantPidGlob: profile.cotenant.pidGlob ?? "",
+    cotenantEpochFile: profile.cotenant.epochFile ?? "",
+    cotenantEpochBound: profile.cotenant.epochBoundSeconds ?? 0,
     cotenantMarkerDir: profile.cotenant.mode === "marker-dir",
     cotenantCommand: profile.cotenant.mode === "command",
     swapYieldMb: profile.cotenant.swapYieldMb ?? 0,

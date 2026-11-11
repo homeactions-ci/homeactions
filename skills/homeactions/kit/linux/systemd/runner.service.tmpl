@@ -1,0 +1,43 @@
+# /etc/systemd/system/{{derived.daemonLabel}}.service (root:root 0644): the GitHub Actions runner of
+# homeactions tenant {{tenant.user}} ({{repo.slug}}, runner {{tenant.runnerName}}). Hardened: no new
+# privileges, the whole file system read-only except the tenant home and a private /tmp, idle I/O class,
+# nice {{caps.nice}}, and a stop that kills every process the jobs left behind (control-group).
+# ProtectHome stays "no" on purpose: the tenant home must stay writable, and other users' homes are
+# kept out by their mode / ACL deny entries, which the provisioner sets.
+[Unit]
+Description=homeactions runner {{tenant.runnerName}} (tenant {{tenant.user}})
+Wants=network-online.target
+After=network-online.target{{#if isolation.network}} {{derived.firewallLabel}}.service{{/if}}
+{{#if isolation.network}}Requires={{derived.firewallLabel}}.service
+{{/if}}StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User={{tenant.user}}
+Group={{tenant.group}}
+WorkingDirectory={{derived.runnerDir}}
+ExecStart={{derived.runnerDir}}/runsvc.sh
+Restart=always
+RestartSec=5
+KillMode=control-group
+KillSignal=SIGTERM
+TimeoutStopSec=5min
+Nice={{caps.nice}}
+IOSchedulingClass=idle
+LimitNOFILE={{caps.openFiles}}
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=no
+ReadWritePaths={{tenant.home}} /tmp
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=multi-user.target

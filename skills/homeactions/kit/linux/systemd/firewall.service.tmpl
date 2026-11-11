@@ -1,0 +1,23 @@
+# /etc/systemd/system/{{derived.firewallLabel}}.service (root:root 0644): loads the nftables table
+# inet {{derived.nftTable}} (rules for uid {{tenant.uid}} only) at boot, before the runner unit starts.
+# PartOf / ReloadPropagatedFrom nftables.service: a distro `systemctl restart|reload nftables` runs
+# `flush ruleset`, which would drop this table, so this unit is re-applied with it.
+[Unit]
+Description=homeactions nftables rules for tenant {{tenant.user}}
+DefaultDependencies=no
+Wants=network-pre.target
+Before=network-pre.target shutdown.target {{derived.daemonLabel}}.service
+After=local-fs.target nftables.service
+Conflicts=shutdown.target
+PartOf=nftables.service
+ReloadPropagatedFrom=nftables.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/bash {{tenant.rootDir}}/nft-load.sh load
+ExecReload=/bin/bash {{tenant.rootDir}}/nft-load.sh load
+ExecStop=/bin/bash {{tenant.rootDir}}/nft-load.sh unload
+
+[Install]
+WantedBy=multi-user.target

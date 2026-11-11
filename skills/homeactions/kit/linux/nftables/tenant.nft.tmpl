@@ -1,0 +1,45 @@
+# {{tenant.rootDir}}/tenant.nft (root:root 0644): nftables rules for homeactions tenant {{tenant.user}}
+# (uid {{tenant.uid}}) ONLY. Mirrors the macOS pf anchor. Every rule carries `meta skuid {{tenant.uid}}`,
+# so no other user's traffic (and no socket-less kernel packet) can match anything here.
+# Loaded by {{tenant.rootDir}}/nft-load.sh, which fills the two private sets from isolation.privateRanges
+# in the same transaction. The table is the tenant's own: no other table, chain or the ruleset is touched.
+#
+# Inbound: skuid only exists for locally generated packets, so "nothing off-box may connect to a
+# tenant listener" cannot be written per uid on the input hook. Instead the tenant's services bind
+# 127.0.0.1 only, and the job-completed hook fails the job if the tenant has a non-loopback listener.
+table inet {{derived.nftTable}} {
+  set private4 {
+    type ipv4_addr
+    flags interval
+  }
+  set private6 {
+    type ipv6_addr
+    flags interval
+  }
+
+  chain output {
+    type filter hook output priority 0; policy accept;
+
+    # 1. Loopback and this host's own addresses (Linux routes both through lo): the tenant's own
+    #    ports only, both directions (requests to them, replies from them). Local DNS stubs
+    #    (systemd-resolved 127.0.0.53, dnsmasq) stay reachable on port 53. Everything else on lo
+    #    (sshd, databases, other users' dev servers) is rejected for the tenant.
+    oifname "lo" meta skuid {{tenant.uid}} tcp dport { {{derived.portsComma}} } accept
+    oifname "lo" meta skuid {{tenant.uid}} tcp sport { {{derived.portsComma}} } accept
+    oifname "lo" meta skuid {{tenant.uid}} ip daddr 127.0.0.0/8 meta l4proto { tcp, udp } th dport 53 accept
+    oifname "lo" meta skuid {{tenant.uid}} ip6 daddr ::1 meta l4proto { tcp, udp } th dport 53 accept
+    oifname "lo" meta skuid {{tenant.uid}} meta l4proto tcp reject with tcp reset
+    oifname "lo" meta skuid {{tenant.uid}} reject
+
+    # 2. Every private, link-local and CGNAT network: DNS to a private resolver stays open, the rest
+    #    is rejected.
+    meta skuid {{tenant.uid}} ip daddr @private4 meta l4proto { tcp, udp } th dport 53 accept
+    meta skuid {{tenant.uid}} ip6 daddr @private6 meta l4proto { tcp, udp } th dport 53 accept
+    meta skuid {{tenant.uid}} ip daddr @private4 meta l4proto tcp reject with tcp reset
+    meta skuid {{tenant.uid}} ip daddr @private4 reject
+    meta skuid {{tenant.uid}} ip6 daddr @private6 meta l4proto tcp reject with tcp reset
+    meta skuid {{tenant.uid}} ip6 daddr @private6 reject
+
+    # 3. The internet: accepted (the chain policy).
+  }
+}

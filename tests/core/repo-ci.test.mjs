@@ -20,7 +20,7 @@ test("no workflow of this public repo can run on a self-hosted runner", () => {
 
 test("CI runs the tests, the specifics scanner, gitleaks and plugin validation", () => {
   const ci = readFileSync(path.join(WF, "ci.yml"), "utf8");
-  for (const needle of ["node --test tests/", "node scripts/scan-specifics.mjs", "gitleaks git", "plugin validate --strict", "--check"]) assert.ok(ci.includes(needle), needle);
+  for (const needle of ['node --test "tests/**/*.test.mjs"', "node scripts/scan-specifics.mjs", "gitleaks git", "plugin validate --strict", "--check"]) assert.ok(ci.includes(needle), needle);
 });
 
 test("the plugin and marketplace manifests agree on the name and are MIT", () => {

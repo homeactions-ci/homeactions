@@ -1,0 +1,18 @@
+[
+  {"template": "common/hooks/lib.sh", "output": "host/hooks/lib.sh", "mode": "0755"},
+  {"template": "common/hooks/job-started.sh", "output": "host/hooks/job-started.sh", "mode": "0755"},
+  {"template": "common/hooks/job-completed.sh", "output": "host/hooks/job-completed.sh", "mode": "0755"},
+  {"template": "common/tenant.conf", "output": "host/conf/tenant.conf", "mode": "0644"},
+  {"template": "common/runner.env", "output": "host/runner/.env", "mode": "0644", "header": false},
+  {"template": "common/runner.path", "output": "host/runner/.path", "mode": "0644", "header": false},
+  {"template": "common/services/postgres.sh", "output": "host/services/postgres.sh", "mode": "0755", "when": "derived.hasPostgres"},
+  {"template": "common/services/build-postgres.sh", "output": "host/services/build-postgres.sh", "mode": "0755", "when": "derived.hasPostgres"},
+  {"template": "common/services/redis.sh", "output": "host/services/redis.sh", "mode": "0755", "when": "derived.hasRedis"},
+  {"template": "common/services/build-redis.sh", "output": "host/services/build-redis.sh", "mode": "0755", "when": "derived.hasRedis"},
+  {"template": "common/maintenance.sh", "output": "host/maintenance.sh", "mode": "0755"},
+  {"template": "common/smoke/smoke-probes.sh", "output": "host/smoke/smoke-probes.sh", "mode": "0755"},
+  {"template": "common/smoke/timed.sh", "output": "host/smoke/timed.sh", "mode": "0755"},
+  {"template": "common/smoke/sample-pressure.sh", "output": "host/smoke/sample-pressure.sh", "mode": "0755"},
+  {"template": "common/services/postgres.sh", "output": "repo/.homeactions/services/postgres.sh", "mode": "0755", "when": "derived.hasPostgres"},
+  {"template": "common/services/redis.sh", "output": "repo/.homeactions/services/redis.sh", "mode": "0755", "when": "derived.hasRedis"}
+]

@@ -32,7 +32,7 @@ jobs:
         run: |
           if [ "$RUNNER_OS" = "Linux" ]; then sudo apt-get update -qq && sudo apt-get install -y -qq shellcheck nftables >/dev/null; else brew install shellcheck >/dev/null; fi
       - name: Unit, render, kit, audit, guard tests
-        run: node --test tests/
+        run: node --test "tests/**/*.test.mjs"
       - name: Render every fixture and re-check determinism
         run: |
           for p in fixtures/profiles/*.json; do

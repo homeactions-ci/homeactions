@@ -1,0 +1,40 @@
+# Off-box watchdog for the {{derived.banner}} runner, on a GitHub-hosted runner every 3 hours.
+# About 8 hosted minutes a day (around 240 a month). It does not run while hosted minutes are blocked, and
+# GitHub's schedule can be late: see .homeactions/WATCHDOG.md for the trade-offs.
+# Token: GH_TOKEN is the optional Actions secret HOMEACTIONS_WATCHDOG_TOKEN (fine-grained, this repo only:
+# Actions read/write, Issues read/write, Administration read to see the runner list) or else the job's own
+# token, which cannot list runners (offline and wedged then share one message).
+name: homeactions runner watchdog
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+    inputs:
+      threshold_minutes:
+        description: "Alert when a {{tenant.runnerLabels.0}} job has been queued this long with nothing running"
+        type: number
+        default: {{watchdog.thresholdMinutes}}
+
+permissions:
+  contents: read
+  issues: write
+{{#if watchdog.reapClosedPrs}}  actions: write{{else}}  actions: read{{/if}}
+
+concurrency:
+  group: homeactions-watchdog
+  cancel-in-progress: false
+
+jobs:
+  watchdog:
+    if: vars.{{workflows.fallbackVariable}} == '{{workflows.selfValue}}' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .homeactions
+      - name: Watchdog
+        env:
+          GH_TOKEN: ${{ secrets.HOMEACTIONS_WATCHDOG_TOKEN || github.token }}
+        run: node .homeactions/watchdog.mjs --apply{{#if watchdog.reapClosedPrs}} --reap{{/if}} --threshold "${{ inputs.threshold_minutes || {{watchdog.thresholdMinutes}} }}"

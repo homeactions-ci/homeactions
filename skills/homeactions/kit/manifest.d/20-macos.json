@@ -1,0 +1,7 @@
+[
+  { "template": "macos/provision.sh", "output": "host/provision.sh", "os": ["macos"], "mode": "0755" },
+  { "template": "macos/uninstall.sh", "output": "host/uninstall.sh", "os": ["macos"], "mode": "0755" },
+  { "template": "macos/pf/anchor.tmpl", "output": "host/pf/anchor.pf", "os": ["macos"], "when": "isolation.network" },
+  { "template": "macos/pf/pf-load.sh", "output": "host/pf/pf-load.sh", "os": ["macos"], "when": "isolation.network", "mode": "0755" },
+  { "template": "macos/launchd/firewall.plist.tmpl", "output": "host/launchd/firewall.plist", "os": ["macos"], "when": "isolation.network" }
+]
