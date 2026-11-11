@@ -34,7 +34,7 @@ export function detect(ctx) {
     return [...w.superseded].reduce((a, r) => a + (ctx.stats.runBillable.get(r) ?? 0), 0) * ctx.stats.factor / Math.max(1, ctx.workflows.find((x) => x.file === s.file).jobs.length);
   });
   return result(meta, "found", {
-    summary: bad.map((b) => `${b.wf.file}: ${b.why}`).join("; "),
+    summary: bad.map((b) => `${b.wf.file}: ${b.why}`).join("; ") + (good.length ? ` (already right in ${good.map((w) => w.file).join(", ")})` : ""),
     evidence: [...bad.map((b) => ev(b.wf.file, b.line)), ...[...files].flatMap((f) => [...(ctx.stats.perWorkflow.get(f)?.superseded ?? [])].slice(0, 5).map((r) => ({ run: r })))],
     minutes,
   });

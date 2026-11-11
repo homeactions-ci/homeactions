@@ -47,7 +47,7 @@ export function detect(ctx) {
   const mono = ctx.shape.monorepo;
   const [lo, hi] = mono ? [0.1, 0.35] : [0.05, 0.2];
   return result(meta, "found", {
-    summary: `${bad.map((w) => w.file).join(", ")}: no paths filter, changes job or affected-only build${mono ? " in a monorepo" : ""}.`,
+    summary: `${bad.map((w) => w.file).join(", ")}: no paths filter, changes job or affected-only build${mono ? " in a monorepo" : ""}.` + (good.length ? ` Already scoped: ${good.map((g) => `${g.wf.file} (${g.how})`).join("; ")}.` : ""),
     evidence: bad.map((w) => ev(w.file, triggerLine(w, hasPrTrigger(w) ? "pull_request" : "push"))),
     minutes: estimate(ctx, bad.flatMap((w) => w.jobs), lo, hi, [`${Math.round(lo * 100)}-${Math.round(hi * 100)}% of pushes/PRs touch only docs${mono ? " or one app" : ""} (typical; check with git log)`]),
   });

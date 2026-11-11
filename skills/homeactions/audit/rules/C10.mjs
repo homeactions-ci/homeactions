@@ -8,7 +8,10 @@ export const title = "Full-history checkouts; rerun-heavy flaky jobs";
 const meta = { id, area, title, risk: "low", effort: "low", reversible: true, appliesOn: "both",
   fix: "Drop `fetch-depth: 0` where nothing reads history (keep it for changesets/release/affected jobs); list the flaky tests from rerun history and quarantine or fix them." };
 
-const NEEDS_HISTORY = /git (describe|log|rev-list|merge-base|diff)|changeset|semantic-release|release-please|nx affected|--filter=[^\s]*\[|setuptools[_-]scm|gitversion|lerna (version|publish)|commitlint/i;
+const NEEDS_HISTORY = /git (describe|log|rev-list|merge-base|diff|cat-file)|changeset|semantic-release|release-please|nx affected|--filter=[^\s]*\[|--filter=["']?\$|\.\.\.HEAD|setuptools[_-]scm|gitversion|lerna (version|publish)|commitlint/i;
+// Actions that compare against a base commit need the history a full clone provides.
+const HISTORY_ACTIONS = /paths-filter|changed-files|turbo-filter|nx-set-shas|git-diff|merge-base/i;
+const needsHistory = (j) => NEEDS_HISTORY.test(runText(j)) || j.steps.some((s) => typeof s.uses === "string" && HISTORY_ACTIONS.test(s.uses));
 export const RERUN_RATE = 0.1;
 
 export function detect(ctx) {
@@ -18,7 +21,7 @@ export function detect(ctx) {
     for (const s of j.steps) {
       if (typeof s.uses !== "string" || !/^actions\/checkout@/.test(s.uses)) continue;
       const w = s.with ?? {};
-      if (w["fetch-depth"] === 0 && !NEEDS_HISTORY.test(runText(j))) deep.push({ j, s });
+      if (w["fetch-depth"] === 0 && !needsHistory(j)) deep.push({ j, s });
       if (w["fetch-depth"] === 1 || w.filter || w["sparse-checkout"]) shallow.push({ j, s });
     }
   }

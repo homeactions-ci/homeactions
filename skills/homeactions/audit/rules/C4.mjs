@@ -23,11 +23,14 @@ export function detect(ctx) {
     const canSelf = k === "self" || k === "switch";
     const jobGated = HOSTED_GATE_RE.test(j.if);
     if (canHosted && !caches.length) uncached.push(j);
-    for (const s of caches) if (canSelf && !HOSTED_GATE_RE.test(stepIf(s)) && !jobGated) ungated.push({ j, s });
+    // A cache is gated off self-hosted by the step's `if:`, the job's `if:`, or an expression in `with.cache`
+    // itself (e.g. `cache: ${{ runner.environment == 'github-hosted' && 'pnpm' || '' }}`).
+    const gated = (s) => HOSTED_GATE_RE.test(stepIf(s)) || HOSTED_GATE_RE.test(String(s.with?.cache ?? ""));
+    for (const s of caches) if (canSelf && !gated(s) && !jobGated) ungated.push({ j, s });
     if ((caches.length || !canHosted) && !ungated.some((u) => u.j === j)) good.push(j);
   }
   if (!uncached.length && !ungated.length) {
-    const gated = installJobs.some((j) => j.steps.some((s) => isCacheStep(s) && HOSTED_GATE_RE.test(stepIf(s))));
+    const gated = installJobs.some((j) => j.steps.some((s) => isCacheStep(s) && (HOSTED_GATE_RE.test(stepIf(s)) || HOSTED_GATE_RE.test(String(s.with?.cache ?? "")))));
     return result(meta, "already-done", { summary: gated ? "Caches are on for hosted runs and gated off on self-hosted (runner.environment)." : "Every hosted install job uses a cache.", evidence: good.map((j) => ev(j.file, j.line)) });
   }
   const parts = [];
