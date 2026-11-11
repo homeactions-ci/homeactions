@@ -153,7 +153,7 @@ function makeRepo(profileName, extraWorkflows) {
 function runPlacement(repo) {
   const env = { ...process.env, HOMEACTIONS_REPO_ROOT: repo };
   delete env.NODE_TEST_CONTEXT; // run as a top-level test process, as the user's CI would
-  const r = spawnSync(process.execPath, ["--test", path.join(repo, ".homeactions", "tests", "placement.test.mjs")], { encoding: "utf8", env });
+  const r = spawnSync(process.execPath, ["--test", "--test-reporter=spec", path.join(repo, ".homeactions", "tests", "placement.test.mjs")], { encoding: "utf8", env });
   return { status: r.status, out: r.stdout + r.stderr };
 }
 
@@ -184,8 +184,8 @@ test("rendered placement test: green on a compliant repo (plus a hosted-only job
     assert.ok(d.runsOnExpression.includes("self-hosted"));
     const r = runPlacement(repo);
     assert.equal(r.status, 0, r.out);
-    assert.match(r.out, /ci\.yml#test: safe to run self-hosted/);
-    assert.match(r.out, /homeactions-runner-smoke\.yml#smoke: runs-on/);
+    assert.match(r.out, /ci\.yml\\?#test: safe to run self-hosted/);
+    assert.match(r.out, /homeactions-runner-smoke\.yml\\?#smoke: runs-on/);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
@@ -198,7 +198,7 @@ test("rendered placement test: green with the hosted-cron watchdog workflow pres
     assert.ok(readdirSync(path.join(repo, ".github", "workflows")).includes("homeactions-watchdog.yml"));
     const r = runPlacement(repo);
     assert.equal(r.status, 0, r.out);
-    assert.match(r.out, /homeactions-watchdog\.yml#watchdog: runs-on/);
+    assert.match(r.out, /homeactions-watchdog\.yml\\?#watchdog: runs-on/);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
