@@ -4,7 +4,12 @@ All notable changes to homeactions are recorded here. The format follows [Keep a
 
 ## [Unreleased]
 
-## [0.1.0] - Unreleased
+## [0.1.1] - 2026-11-12
+
+### Fixed
+- Audit C7: when one long unsharded test job is found, the summary also credits the jobs that are already sharded, so the user is not told to shard what they already split. Found on the first real production audit.
+
+## [0.1.0] - 2026-11-12
 
 First public beta. Unproven until the first production install passes.
 
