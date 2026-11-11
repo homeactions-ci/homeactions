@@ -50,7 +50,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           shopt -s nullglob globstar
-          for u in out/linux-beta/host/**/*.service; do systemd-analyze verify "$u" || { echo "systemd-analyze rejected $u"; exit 1; }; done
+          bash scripts/verify-systemd-units.sh fixtures/profiles/linux-beta.json out/linux-beta
           for n in out/linux-beta/host/**/*.nft; do sudo nft -c -f "$n"; done
 
   hygiene:
