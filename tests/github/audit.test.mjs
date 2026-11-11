@@ -348,3 +348,17 @@ test("ledger: one row per job, billable totals, refused runs noted", async () =>
   assert.match(md, /\*\*Total\*\*/);
   assert.match(md, /refused since 2026-11-10/);
 });
+
+// Regression (found on a real tuned monorepo, 2026-11-12): when C7 finds one long unsharded job, it still
+// credits the jobs that are already sharded, so the user is not told to shard what they already split.
+test("C7 found still credits already-sharded test jobs in its summary", async () => {
+  const { detect } = await import("../../skills/homeactions/audit/rules/C7.mjs");
+  const job = (id, run) => ({ id, name: id, key: `ci.yml#${id}`, file: ".github/workflows/ci.yml", line: 1, reusable: false, steps: [{ run }] });
+  const jobs = [job("e2e-admin-1", "pnpm exec playwright test --shard=1/2"), job("e2e-admin-2", "pnpm exec playwright test --shard=2/2"), job("webkit", "pnpm exec playwright test --project=webkit")];
+  const perJob = new Map([["ci.yml#webkit", { median: 16, samples: [16] }]]);
+  const ctx = { jobs, hasHistory: true, stats: { perJob, factor: 1 }, multipliers: { linux: 1 }, history: { days: 30 } };
+  const r = detect(ctx);
+  assert.equal(r.status, "found");
+  assert.match(r.summary, /ci\.yml#webkit takes 16 min/);
+  assert.match(r.summary, /Already sharded: ci\.yml#e2e-admin-1, ci\.yml#e2e-admin-2\./);
+});

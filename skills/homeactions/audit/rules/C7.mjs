@@ -24,7 +24,7 @@ export function detect(ctx) {
   const long = unsharded.filter((j) => (ctx.stats.perJob.get(j.key)?.median ?? 0) >= LONG_MINUTES);
   if (long.length) {
     return result(meta, "found", {
-      summary: long.map((j) => `${j.key} takes ${Math.round(ctx.stats.perJob.get(j.key).median)} min (median), unsharded`).join("; "),
+      summary: long.map((j) => `${j.key} takes ${Math.round(ctx.stats.perJob.get(j.key).median)} min (median), unsharded`).join("; ") + (shardedJobs.length ? `. Already sharded: ${shardedJobs.map((j) => j.key).join(", ")}.` : ""),
       evidence: long.map((j) => ev(j.file, j.line)),
       minutes: estimate(ctx, long, 0, 0.15, ["sharding cuts wall-clock time, not billed minutes (each shard repeats setup)", "fixing the slowest tests found by the report trims up to 15%"]),
     });
