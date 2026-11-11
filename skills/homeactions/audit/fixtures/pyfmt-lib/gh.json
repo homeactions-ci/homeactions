@@ -1,0 +1,1567 @@
+{
+ "now": "2026-11-12T00:00:00Z",
+ "responses": {
+  "/repos/example-org/pyfmt-lib": {
+   "status": 200,
+   "body": {
+    "full_name": "example-org/pyfmt-lib",
+    "private": true,
+    "visibility": "private",
+    "default_branch": "main",
+    "owner": {
+     "login": "example-dev",
+     "type": "User"
+    }
+   }
+  },
+  "/users/example-dev/settings/billing/usage": {
+   "status": 404,
+   "body": {
+    "message": "Not Found",
+    "status": "404"
+   }
+  },
+  "/users/example-dev/settings/billing/budgets": {
+   "status": 403,
+   "body": {
+    "message": "Resource not accessible by personal access token",
+    "status": "403"
+   }
+  },
+  "/repos/example-org/pyfmt-lib/actions/runs?page=1": {
+   "status": 200,
+   "body": {
+    "total_count": 9,
+    "workflow_runs": [
+     {
+      "id": 9100122,
+      "name": "test.yml",
+      "path": ".github/workflows/test.yml",
+      "event": "pull_request",
+      "head_branch": "fix-7",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-09T08:00:00Z",
+      "updated_at": "2026-11-09T08:06:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/pyfmt-lib"
+      }
+     },
+     {
+      "id": 9100121,
+      "name": "test.yml",
+      "path": ".github/workflows/test.yml",
+      "event": "push",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-06T08:00:00Z",
+      "updated_at": "2026-11-06T08:06:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/pyfmt-lib"
+      }
+     },
+     {
+      "id": 9100120,
+      "name": "test.yml",
+      "path": ".github/workflows/test.yml",
+      "event": "pull_request",
+      "head_branch": "fix-5",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-03T08:00:00Z",
+      "updated_at": "2026-11-03T08:06:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/pyfmt-lib"
+      }
+     },
+     {
+      "id": 9100123,
+      "name": "wheels.yml",
+      "path": ".github/workflows/wheels.yml",
+      "event": "push",
+      "head_branch": "v0.4.0",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-02T09:00:00Z",
+      "updated_at": "2026-11-02T09:12:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/pyfmt-lib"
+      }
+     },
+     {
+      "id": 9100119,
+      "name": "test.yml",
+      "path": ".github/workflows/test.yml",
+      "event": "push",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-31T08:00:00Z",
+      "updated_at": "2026-10-31T08:06:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/pyfmt-lib"
+      }
+     },
+     {
+      "id": 9100118,
+      "name": "test.yml",
+      "path": ".github/workflows/test.yml",
+      "event": "pull_request",
+      "head_branch": "fix-3",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-28T08:00:00Z",
+      "updated_at": "2026-10-28T08:06:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/pyfmt-lib"
+      }
+     },
+     {
+      "id": 9100117,
+      "name": "test.yml",
+      "path": ".github/workflows/test.yml",
+      "event": "push",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-25T08:00:00Z",
+      "updated_at": "2026-10-25T08:06:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/pyfmt-lib"
+      }
+     },
+     {
+      "id": 9100116,
+      "name": "test.yml",
+      "path": ".github/workflows/test.yml",
+      "event": "pull_request",
+      "head_branch": "fix-1",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-22T08:00:00Z",
+      "updated_at": "2026-10-22T08:06:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/pyfmt-lib"
+      }
+     },
+     {
+      "id": 9100115,
+      "name": "test.yml",
+      "path": ".github/workflows/test.yml",
+      "event": "push",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-19T08:00:00Z",
+      "updated_at": "2026-10-19T08:06:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/pyfmt-lib"
+      }
+     }
+    ]
+   }
+  },
+  "/repos/example-org/pyfmt-lib/actions/runs/9100115/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 4,
+    "jobs": [
+     {
+      "id": 51000491,
+      "run_id": 9100115,
+      "run_attempt": 1,
+      "name": "test (3.10)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-19T08:00:00Z",
+      "started_at": "2026-10-19T08:00:12Z",
+      "completed_at": "2026-10-19T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-19T08:00:12Z",
+        "completed_at": "2026-10-19T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-19T08:01:00Z",
+        "completed_at": "2026-10-19T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-19T08:01:48Z",
+        "completed_at": "2026-10-19T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-19T08:02:36Z",
+        "completed_at": "2026-10-19T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-19T08:03:24Z",
+        "completed_at": "2026-10-19T08:04:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000492,
+      "run_id": 9100115,
+      "run_attempt": 1,
+      "name": "test (3.11)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-19T08:00:00Z",
+      "started_at": "2026-10-19T08:00:12Z",
+      "completed_at": "2026-10-19T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-19T08:00:12Z",
+        "completed_at": "2026-10-19T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-19T08:01:00Z",
+        "completed_at": "2026-10-19T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-19T08:01:48Z",
+        "completed_at": "2026-10-19T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-19T08:02:36Z",
+        "completed_at": "2026-10-19T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-19T08:03:24Z",
+        "completed_at": "2026-10-19T08:04:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000493,
+      "run_id": 9100115,
+      "run_attempt": 1,
+      "name": "test (3.12)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-19T08:00:00Z",
+      "started_at": "2026-10-19T08:00:12Z",
+      "completed_at": "2026-10-19T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-19T08:00:12Z",
+        "completed_at": "2026-10-19T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-19T08:01:00Z",
+        "completed_at": "2026-10-19T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-19T08:01:48Z",
+        "completed_at": "2026-10-19T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-19T08:02:36Z",
+        "completed_at": "2026-10-19T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-19T08:03:24Z",
+        "completed_at": "2026-10-19T08:04:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000494,
+      "run_id": 9100115,
+      "run_attempt": 1,
+      "name": "test (3.13)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-19T08:00:00Z",
+      "started_at": "2026-10-19T08:00:12Z",
+      "completed_at": "2026-10-19T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-19T08:00:12Z",
+        "completed_at": "2026-10-19T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-19T08:01:00Z",
+        "completed_at": "2026-10-19T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-19T08:01:48Z",
+        "completed_at": "2026-10-19T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-19T08:02:36Z",
+        "completed_at": "2026-10-19T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-19T08:03:24Z",
+        "completed_at": "2026-10-19T08:04:12Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/pyfmt-lib/actions/runs/9100116/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000495,
+      "run_id": 9100116,
+      "run_attempt": 1,
+      "name": "test (3.12)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T08:00:00Z",
+      "started_at": "2026-10-22T08:00:12Z",
+      "completed_at": "2026-10-22T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-22T08:00:12Z",
+        "completed_at": "2026-10-22T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-22T08:01:00Z",
+        "completed_at": "2026-10-22T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-22T08:01:48Z",
+        "completed_at": "2026-10-22T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-22T08:02:36Z",
+        "completed_at": "2026-10-22T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-22T08:03:24Z",
+        "completed_at": "2026-10-22T08:04:12Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/pyfmt-lib/actions/runs/9100117/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 4,
+    "jobs": [
+     {
+      "id": 51000496,
+      "run_id": 9100117,
+      "run_attempt": 1,
+      "name": "test (3.10)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-25T08:00:00Z",
+      "started_at": "2026-10-25T08:00:12Z",
+      "completed_at": "2026-10-25T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-25T08:00:12Z",
+        "completed_at": "2026-10-25T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-25T08:01:00Z",
+        "completed_at": "2026-10-25T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-25T08:01:48Z",
+        "completed_at": "2026-10-25T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-25T08:02:36Z",
+        "completed_at": "2026-10-25T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-25T08:03:24Z",
+        "completed_at": "2026-10-25T08:04:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000497,
+      "run_id": 9100117,
+      "run_attempt": 1,
+      "name": "test (3.11)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-25T08:00:00Z",
+      "started_at": "2026-10-25T08:00:12Z",
+      "completed_at": "2026-10-25T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-25T08:00:12Z",
+        "completed_at": "2026-10-25T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-25T08:01:00Z",
+        "completed_at": "2026-10-25T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-25T08:01:48Z",
+        "completed_at": "2026-10-25T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-25T08:02:36Z",
+        "completed_at": "2026-10-25T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-25T08:03:24Z",
+        "completed_at": "2026-10-25T08:04:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000498,
+      "run_id": 9100117,
+      "run_attempt": 1,
+      "name": "test (3.12)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-25T08:00:00Z",
+      "started_at": "2026-10-25T08:00:12Z",
+      "completed_at": "2026-10-25T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-25T08:00:12Z",
+        "completed_at": "2026-10-25T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-25T08:01:00Z",
+        "completed_at": "2026-10-25T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-25T08:01:48Z",
+        "completed_at": "2026-10-25T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-25T08:02:36Z",
+        "completed_at": "2026-10-25T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-25T08:03:24Z",
+        "completed_at": "2026-10-25T08:04:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000499,
+      "run_id": 9100117,
+      "run_attempt": 1,
+      "name": "test (3.13)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-25T08:00:00Z",
+      "started_at": "2026-10-25T08:00:12Z",
+      "completed_at": "2026-10-25T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-25T08:00:12Z",
+        "completed_at": "2026-10-25T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-25T08:01:00Z",
+        "completed_at": "2026-10-25T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-25T08:01:48Z",
+        "completed_at": "2026-10-25T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-25T08:02:36Z",
+        "completed_at": "2026-10-25T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-25T08:03:24Z",
+        "completed_at": "2026-10-25T08:04:12Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/pyfmt-lib/actions/runs/9100118/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000500,
+      "run_id": 9100118,
+      "run_attempt": 1,
+      "name": "test (3.12)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-28T08:00:00Z",
+      "started_at": "2026-10-28T08:00:12Z",
+      "completed_at": "2026-10-28T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-28T08:00:12Z",
+        "completed_at": "2026-10-28T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-28T08:01:00Z",
+        "completed_at": "2026-10-28T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-28T08:01:48Z",
+        "completed_at": "2026-10-28T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-28T08:02:36Z",
+        "completed_at": "2026-10-28T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-28T08:03:24Z",
+        "completed_at": "2026-10-28T08:04:12Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/pyfmt-lib/actions/runs/9100119/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 4,
+    "jobs": [
+     {
+      "id": 51000501,
+      "run_id": 9100119,
+      "run_attempt": 1,
+      "name": "test (3.10)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-31T08:00:00Z",
+      "started_at": "2026-10-31T08:00:12Z",
+      "completed_at": "2026-10-31T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-31T08:00:12Z",
+        "completed_at": "2026-10-31T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-31T08:01:00Z",
+        "completed_at": "2026-10-31T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-31T08:01:48Z",
+        "completed_at": "2026-10-31T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-31T08:02:36Z",
+        "completed_at": "2026-10-31T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-31T08:03:24Z",
+        "completed_at": "2026-10-31T08:04:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000502,
+      "run_id": 9100119,
+      "run_attempt": 1,
+      "name": "test (3.11)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-31T08:00:00Z",
+      "started_at": "2026-10-31T08:00:12Z",
+      "completed_at": "2026-10-31T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-31T08:00:12Z",
+        "completed_at": "2026-10-31T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-31T08:01:00Z",
+        "completed_at": "2026-10-31T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-31T08:01:48Z",
+        "completed_at": "2026-10-31T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-31T08:02:36Z",
+        "completed_at": "2026-10-31T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-31T08:03:24Z",
+        "completed_at": "2026-10-31T08:04:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000503,
+      "run_id": 9100119,
+      "run_attempt": 1,
+      "name": "test (3.12)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-31T08:00:00Z",
+      "started_at": "2026-10-31T08:00:12Z",
+      "completed_at": "2026-10-31T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-31T08:00:12Z",
+        "completed_at": "2026-10-31T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-31T08:01:00Z",
+        "completed_at": "2026-10-31T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-31T08:01:48Z",
+        "completed_at": "2026-10-31T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-31T08:02:36Z",
+        "completed_at": "2026-10-31T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-31T08:03:24Z",
+        "completed_at": "2026-10-31T08:04:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000504,
+      "run_id": 9100119,
+      "run_attempt": 1,
+      "name": "test (3.13)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-31T08:00:00Z",
+      "started_at": "2026-10-31T08:00:12Z",
+      "completed_at": "2026-10-31T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-31T08:00:12Z",
+        "completed_at": "2026-10-31T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-31T08:01:00Z",
+        "completed_at": "2026-10-31T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-31T08:01:48Z",
+        "completed_at": "2026-10-31T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-31T08:02:36Z",
+        "completed_at": "2026-10-31T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-31T08:03:24Z",
+        "completed_at": "2026-10-31T08:04:12Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/pyfmt-lib/actions/runs/9100120/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000505,
+      "run_id": 9100120,
+      "run_attempt": 1,
+      "name": "test (3.12)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-03T08:00:00Z",
+      "started_at": "2026-11-03T08:00:12Z",
+      "completed_at": "2026-11-03T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-03T08:00:12Z",
+        "completed_at": "2026-11-03T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-03T08:01:00Z",
+        "completed_at": "2026-11-03T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-03T08:01:48Z",
+        "completed_at": "2026-11-03T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-03T08:02:36Z",
+        "completed_at": "2026-11-03T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-03T08:03:24Z",
+        "completed_at": "2026-11-03T08:04:12Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/pyfmt-lib/actions/runs/9100121/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 4,
+    "jobs": [
+     {
+      "id": 51000506,
+      "run_id": 9100121,
+      "run_attempt": 1,
+      "name": "test (3.10)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-06T08:00:00Z",
+      "started_at": "2026-11-06T08:00:12Z",
+      "completed_at": "2026-11-06T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-06T08:00:12Z",
+        "completed_at": "2026-11-06T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-06T08:01:00Z",
+        "completed_at": "2026-11-06T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-06T08:01:48Z",
+        "completed_at": "2026-11-06T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-06T08:02:36Z",
+        "completed_at": "2026-11-06T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-06T08:03:24Z",
+        "completed_at": "2026-11-06T08:04:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000507,
+      "run_id": 9100121,
+      "run_attempt": 1,
+      "name": "test (3.11)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-06T08:00:00Z",
+      "started_at": "2026-11-06T08:00:12Z",
+      "completed_at": "2026-11-06T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-06T08:00:12Z",
+        "completed_at": "2026-11-06T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-06T08:01:00Z",
+        "completed_at": "2026-11-06T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-06T08:01:48Z",
+        "completed_at": "2026-11-06T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-06T08:02:36Z",
+        "completed_at": "2026-11-06T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-06T08:03:24Z",
+        "completed_at": "2026-11-06T08:04:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000508,
+      "run_id": 9100121,
+      "run_attempt": 1,
+      "name": "test (3.12)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-06T08:00:00Z",
+      "started_at": "2026-11-06T08:00:12Z",
+      "completed_at": "2026-11-06T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-06T08:00:12Z",
+        "completed_at": "2026-11-06T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-06T08:01:00Z",
+        "completed_at": "2026-11-06T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-06T08:01:48Z",
+        "completed_at": "2026-11-06T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-06T08:02:36Z",
+        "completed_at": "2026-11-06T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-06T08:03:24Z",
+        "completed_at": "2026-11-06T08:04:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000509,
+      "run_id": 9100121,
+      "run_attempt": 1,
+      "name": "test (3.13)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-06T08:00:00Z",
+      "started_at": "2026-11-06T08:00:12Z",
+      "completed_at": "2026-11-06T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-06T08:00:12Z",
+        "completed_at": "2026-11-06T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-06T08:01:00Z",
+        "completed_at": "2026-11-06T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-06T08:01:48Z",
+        "completed_at": "2026-11-06T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-06T08:02:36Z",
+        "completed_at": "2026-11-06T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-06T08:03:24Z",
+        "completed_at": "2026-11-06T08:04:12Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/pyfmt-lib/actions/runs/9100122/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000510,
+      "run_id": 9100122,
+      "run_attempt": 1,
+      "name": "test (3.12)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T08:00:00Z",
+      "started_at": "2026-11-09T08:00:12Z",
+      "completed_at": "2026-11-09T08:04:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-09T08:00:12Z",
+        "completed_at": "2026-11-09T08:01:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-09T08:01:00Z",
+        "completed_at": "2026-11-09T08:01:48Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-09T08:01:48Z",
+        "completed_at": "2026-11-09T08:02:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-09T08:02:36Z",
+        "completed_at": "2026-11-09T08:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-09T08:03:24Z",
+        "completed_at": "2026-11-09T08:04:12Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/pyfmt-lib/actions/runs/9100123/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 3,
+    "jobs": [
+     {
+      "id": 51000511,
+      "run_id": 9100123,
+      "run_attempt": 1,
+      "name": "sdist",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-02T09:00:00Z",
+      "started_at": "2026-11-02T09:00:12Z",
+      "completed_at": "2026-11-02T09:01:12Z",
+      "labels": [
+       "ubuntu-24.04-arm"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-02T09:00:12Z",
+        "completed_at": "2026-11-02T09:00:24Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-02T09:00:24Z",
+        "completed_at": "2026-11-02T09:00:36Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-02T09:00:36Z",
+        "completed_at": "2026-11-02T09:00:48Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-02T09:00:48Z",
+        "completed_at": "2026-11-02T09:01:00Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-02T09:01:00Z",
+        "completed_at": "2026-11-02T09:01:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000512,
+      "run_id": 9100123,
+      "run_attempt": 1,
+      "name": "macos-wheels",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-02T09:00:00Z",
+      "started_at": "2026-11-02T09:00:12Z",
+      "completed_at": "2026-11-02T09:08:12Z",
+      "labels": [
+       "macos-14"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-02T09:00:12Z",
+        "completed_at": "2026-11-02T09:01:48Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-02T09:01:48Z",
+        "completed_at": "2026-11-02T09:03:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-02T09:03:24Z",
+        "completed_at": "2026-11-02T09:05:00Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-02T09:05:00Z",
+        "completed_at": "2026-11-02T09:06:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-02T09:06:36Z",
+        "completed_at": "2026-11-02T09:08:12Z"
+       }
+      ]
+     },
+     {
+      "id": 51000513,
+      "run_id": 9100123,
+      "run_attempt": 1,
+      "name": "publish",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-02T09:00:00Z",
+      "started_at": "2026-11-02T09:09:00Z",
+      "completed_at": "2026-11-02T09:10:00Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-02T09:09:00Z",
+        "completed_at": "2026-11-02T09:09:12Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-02T09:09:12Z",
+        "completed_at": "2026-11-02T09:09:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-02T09:09:24Z",
+        "completed_at": "2026-11-02T09:09:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-02T09:09:36Z",
+        "completed_at": "2026-11-02T09:09:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-02T09:09:48Z",
+        "completed_at": "2026-11-02T09:10:00Z"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

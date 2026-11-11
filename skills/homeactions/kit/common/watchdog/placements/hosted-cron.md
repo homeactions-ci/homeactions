@@ -1,6 +1,6 @@
 # Watchdog placement: hosted cron ({{derived.banner}})
 
-The watchdog runs as `.github/workflows/homeactions-watchdog.yml` on a GitHub-hosted runner every 3 hours (and on demand). It sees machine death and network loss, because it runs off-box.
+The watchdog runs as `.github/workflows/homeactions-watchdog.yml` on a GitHub-hosted runner every 3 hours (and on demand): `node .homeactions/watchdog.mjs --apply{{#if watchdog.reapClosedPrs}} --reap{{/if}}`. It sees machine death and network loss, because it runs off-box.
 
 Trade-offs, read before choosing this:
 - It costs about 8 hosted minutes a day (around 240 a month).

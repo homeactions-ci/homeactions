@@ -1,0 +1,25 @@
+# Weekly upkeep of the {{derived.banner}} runner (prune stores, wipe caches, trim _diag, check disk).
+# Runs only while jobs are switched to the runner ({{workflows.fallbackVariable}} == '{{workflows.selfValue}}'), or on demand.
+# GitHub's schedule can be late or skipped; the script is idempotent and the doctor reports its last run.
+name: homeactions runner maintenance
+
+on:
+  schedule:
+    - cron: "{{maintenance.cron}}"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: homeactions-maintenance
+  cancel-in-progress: false
+
+jobs:
+  maintenance:
+    if: vars.{{workflows.fallbackVariable}} == '{{workflows.selfValue}}' || github.event_name == 'workflow_dispatch'
+    runs-on: {{derived.selfLabelsJson}}
+    timeout-minutes: 45
+    steps:
+      - name: Maintenance
+        run: bash "{{tenant.rootDir}}/maintenance.sh"

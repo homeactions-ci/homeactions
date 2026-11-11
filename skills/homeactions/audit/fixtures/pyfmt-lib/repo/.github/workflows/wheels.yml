@@ -1,0 +1,52 @@
+# Fictional fixture: release wheels. macOS only for native wheels; publish via trusted publishing.
+name: wheels
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+jobs:
+  sdist:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install build
+        run: pip install build
+      - name: Build sdist
+        run: python -m build --sdist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdist
+          path: dist/*.tar.gz
+
+  macos-wheels:
+    runs-on: macos-14
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build wheels
+        run: pipx run cibuildwheel --output-dir wheelhouse
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheels-macos
+          path: wheelhouse/*.whl
+          retention-days: 5
+
+  publish:
+    needs: [sdist, macos-wheels]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - uses: pypa/gh-action-pypi-publish@release/v1

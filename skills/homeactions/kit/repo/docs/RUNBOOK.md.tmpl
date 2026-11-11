@@ -1,0 +1,71 @@
+# Runbook: the {{derived.banner}} self-hosted runner
+
+The runner `{{tenant.runnerName}}` runs this repository's CI as the dedicated user `{{tenant.user}}` on a {{#if derived.isMacos}}macOS{{else}}Linux{{/if}} machine, with labels `{{join derived.selfLabels ", "}}`. Jobs switch to it while the repository variable `{{workflows.fallbackVariable}}` is `{{workflows.selfValue}}` (or a PR carries the label `{{workflows.selfLabel}}`), and go back to GitHub-hosted runners otherwise (or with the PR label `{{workflows.hostedLabel}}`).
+
+Who does what: privileged steps (anything with `sudo`) are for {{roles.machineAdmin}}, in their own terminal. Repository settings (variables, runner registration) are for {{roles.repoAdmin}}. A coding agent never runs `sudo` and never asks for a token in chat.
+
+## The fallback switch (first aid for anything below)
+
+- Everything back to hosted, now: `gh variable set {{workflows.fallbackVariable}} --body hosted`. Back to the runner: `gh variable set {{workflows.fallbackVariable}} --body {{workflows.selfValue}}`.
+- One PR only: add the label `{{workflows.hostedLabel}}`, then push a commit (or re-run).
+- Jobs already queued for the runner stay queued after the switch: cancel and re-run them.
+
+## Hook messages: `{{derived.banner}} …`
+
+Every job prints a banner at "Set up runner" (`{{derived.banner}} job-started v<N> OK …`) and a summary at the end (`job-completed v<N>: reaped …, wiped …, pressure …, swap … MB`). A line starting `::error::{{derived.banner}}` failed the job **before any step ran**: nothing of your code executed.
+
+| Message (start) | Meaning | What to do |
+|---|---|---|
+| `running as …, not {{tenant.user}}` / `uid is …` / `primary group is …` | The runner service runs as the wrong account. | {{roles.machineAdmin}}: re-run `provision.sh verify`; re-install the service with `provision.sh install` (dry run first). |
+| `… is a member of group … (admin-equivalent)` | The tenant user gained an admin-equivalent group. | {{roles.machineAdmin}}: remove it from the group; the tenant must never be admin. |
+| `… is readable by {{tenant.user}}` | A path that must stay private (another user's home) is readable by the tenant. | {{roles.machineAdmin}}: re-apply the deny rules with `provision.sh install`; check the path's permissions. |
+| `… is writable by {{tenant.user}}` | A root-owned hooks/config directory or a co-tenant's marker directory became writable by the tenant. | {{roles.machineAdmin}}: restore root ownership (`provision.sh install` re-applies it). |
+| `network isolation is not active: … reached …` | The {{#if derived.isMacos}}pf anchor{{else}}nftables table{{/if}} is not loaded, so the tenant could reach a private address. | {{roles.machineAdmin}}: {{#if derived.isMacos}}re-load the pf rules (`host/pf/pf-load.sh`, dry run first); the firewall timer re-applies them within minutes{{else}}`sudo systemctl restart {{derived.firewallLabel}}.service`{{/if}}. Re-run the job after. |
+| `a tenant port is held by another process: …` | One of the ports `{{derived.portsComma}}` is busy before the job starts. | Find the owner (`lsof -nP -iTCP:<port> -sTCP:LISTEN`); a leftover from a cancelled job is reaped by the next job-completed hook. |
+| `a listener of this job was bound off loopback: …` | A test server listened on a non-loopback address. | Bind dev servers to 127.0.0.1 in CI. |
+| `free disk … GB is under the {{diskFloorGb}} GB floor` | The volume is nearly full. | Run maintenance now (below); then look at `du -sh` of the tenant home. |
+| `co-tenant markers UNREADABLE` | The co-tenant's busy signal could not be read; an unreadable signal is never treated as clear. | {{roles.machineAdmin}}: grant `{{tenant.user}}` read access to the marker directory. |
+| `yielding to …` / `run budget of …s spent; starting anyway …` / `co-tenant signal became …` | The job waited for another workload on the machine (bounded, fail-open). | Nothing; frequent long yields mean the machine is over-shared. |
+| `listener check UNREADABLE` | No `lsof`/`ss` to verify listeners. | Install the tool, or accept the warning. |
+| `workspace … not wiped` / `… is a symlink; not wiped` | A cleanup target was outside the runner directory, so it was left alone. | Check the runner's work directory setting. |
+
+The exact wording of each hook check, with more detail, is in the homeactions skill's `references/troubleshooting.md`.
+
+## Jobs queued with nothing running
+
+GitHub shows jobs for an unavailable runner as **Queued**, silently, for up to a day. The watchdog ({{watchdog.placement}}) checks every few hours and keeps one issue open while it lasts. Its states:
+
+- **offline**: no runner with the label `{{tenant.runnerLabels.0}}` is online, or the runner list was unreadable. The machine is off, asleep, locked after a reboot, off the network, or the runner service stopped; a label mismatch looks the same. Check the machine; then `{{#if derived.isMacos}}sudo launchctl print system/{{derived.daemonLabel}} | head{{else}}systemctl status {{derived.daemonLabel}}.service{{/if}}` on it. Use the fallback switch meanwhile.
+- **wedged**: the runner is online and idle, yet jobs stay queued. Signature: `{{derived.runnerDir}}/_diag/Runner_*.log` repeats `Job message not found`. Remedy ({{roles.machineAdmin}}), only when no `Runner.Worker` process exists (`pgrep -fl Runner.Worker` shows nothing):
+
+  ```sh
+  {{#if derived.isMacos}}sudo launchctl kickstart -k system/{{derived.daemonLabel}}{{else}}sudo systemctl restart {{derived.daemonLabel}}.service{{/if}}
+  ```
+- **api-error**: the watchdog could not read GitHub (token expired or under-scoped, rate limit, outage). It says nothing about the runner. Fix the watchdog's token.
+- A busy queue (jobs waiting behind a running job) is normal and never alerts.
+
+Runs of closed or merged PRs are not cancelled by GitHub and hold the runner. {{#if watchdog.reapClosedPrs}}The watchdog cancels them.{{else}}The watchdog lists them; cancel with `gh run cancel <id>`.{{/if}}
+
+## Reboots, encryption and updates
+
+{{#if derived.isMacos}}- With FileVault on, nothing (the runner included) starts after a power cut or reboot until someone logs in once at the machine. `sudo fdesetup authrestart` reboots once without that prompt (for planned restarts).
+- `pmset -g | grep autorestart` shows whether the machine powers back on after a power cut (`sudo pmset autorestart 1` turns it on).
+- Automatic macOS updates can restart the machine at night: then the FileVault rule above applies. Schedule updates when you can log in.
+- Sleep stops the runner; the runner machine should never sleep while it serves CI (`pmset -g` → `sleep 0`).{{else}}- With full-disk encryption (LUKS) that asks for a passphrase at boot, nothing starts after a reboot until someone unlocks it.
+- Unattended upgrades that reboot (e.g. `Unattended-Upgrade::Automatic-Reboot`) take the runner down; plan a window.
+- The runner unit `{{derived.daemonLabel}}.service` starts at boot once the disk is unlocked.{{/if}}
+- After any restart, dispatch the smoke: `gh workflow run homeactions-runner-smoke.yml -f runner=self`.
+
+## Maintenance
+
+`homeactions-runner-maintenance.yml` runs `{{tenant.rootDir}}/maintenance.sh` on the runner at `{{maintenance.cron}}` (UTC) while jobs are switched to it, and on demand: `gh workflow run homeactions-runner-maintenance.yml`. It prunes the package store, wipes the tool and browser caches, trims `_diag` and logs older than {{maintenance.diagRetentionDays}} days, and fails if the tenant home is over {{maintenance.homeMaxGb}} GB or free disk is under {{diskFloorGb}} GB. It skips itself while a job runs. GitHub may run schedules late or skip them; it is safe to run by hand.
+
+## Smoke
+
+`gh workflow run homeactions-runner-smoke.yml -f runner=hosted` (workflow sanity on ubuntu), `-f runner=self` (identity, isolation and install on the runner), `-f runner=offline-drill` (labels no runner has: stays queued, for the watchdog drill; cancel it after).
+
+## Uninstall
+
+1. Switch everything to hosted (the fallback switch above), and remove the runner in the repository settings (Settings → Actions → Runners) or let the uninstaller deregister it.
+2. On the machine, in the kit folder you copied there (the `host/` part of the render), {{roles.machineAdmin}} runs `sudo bash uninstall.sh --dry-run`, reads the list, then runs it without `--dry-run`. It removes exactly what `provision.sh` added: the user `{{tenant.user}}`, its group, the service, {{#if derived.isMacos}}the pf anchor, {{else}}the nftables table, {{/if}}`{{tenant.rootDir}}` and the tenant home.
+3. Delete `.homeactions/` and the `homeactions-*.yml` workflows from the repository, and the `{{workflows.fallbackVariable}}` variable.

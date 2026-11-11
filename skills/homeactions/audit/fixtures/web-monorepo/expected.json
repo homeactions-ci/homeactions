@@ -1,0 +1,26 @@
+{
+  "repo": "example-org/web-monorepo",
+  "note": "Wasteful Next/pnpm monorepo: every catalogue entry is found. History includes a billing-refused PR run (annotation) and rerun attempts of e2e.",
+  "dataSource": "jobs",
+  "outcomes": {
+    "C1": "found",
+    "C2": "found",
+    "C3": "found",
+    "C4": "found",
+    "C5": "found",
+    "C6": "found",
+    "C7": "found",
+    "C8": "found",
+    "C9": "found",
+    "C10": "found",
+    "B1": "found",
+    "B2": "found",
+    "B3": "found",
+    "B4": "found",
+    "B5": "found",
+    "B6": "found",
+    "I1": "found",
+    "I2": "found",
+    "I3": "found"
+  }
+}

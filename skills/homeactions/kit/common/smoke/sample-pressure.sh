@@ -7,6 +7,7 @@ set -u -o pipefail
 out="$1"; interval="${2:-5}"; count="${3:-0}"
 case "$interval$count" in *[!0-9]*) echo "sample-pressure.sh: interval and count are whole numbers" >&2; exit 2 ;; esac
 HERE="$(cd "$(dirname "$0")" && pwd -P)"
+# shellcheck source=/dev/null  # the tenant conf / hooks lib, located at run time
 for f in "$HERE/../hooks/lib.sh" "{{derived.hooksDir}}/lib.sh"; do if [ -r "$f" ]; then . "$f"; break; fi; done
 command -v memory_pressure_level >/dev/null 2>&1 || { echo "sample-pressure.sh: cannot find hooks/lib.sh" >&2; exit 2; }
 n=0

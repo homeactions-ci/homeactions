@@ -1,0 +1,26 @@
+{
+  "repo": "example-org/fleet-apps",
+  "note": "Well-tuned two-app monorepo: cancel-in-progress on PRs only, a changes job, a label-gated WebKit suite, caches gated on runner.environment, timeouts everywhere; reported as already done.",
+  "dataSource": "billing+jobs",
+  "outcomes": {
+    "C1": "already-done",
+    "C2": "already-done",
+    "C3": "already-done",
+    "C4": "already-done",
+    "C5": "already-done",
+    "C6": "already-done",
+    "C7": "already-done",
+    "C8": "not-found",
+    "C9": "already-done",
+    "C10": "already-done",
+    "B1": "already-done",
+    "B2": "already-done",
+    "B3": "already-done",
+    "B4": "not-found",
+    "B5": "already-done",
+    "B6": "already-done",
+    "I1": "already-done",
+    "I2": "already-done",
+    "I3": "not-found"
+  }
+}

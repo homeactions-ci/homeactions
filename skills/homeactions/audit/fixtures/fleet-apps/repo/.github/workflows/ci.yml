@@ -1,0 +1,126 @@
+# Fictional fixture (well tuned): cancel-in-progress on PRs only, a changes job, gated caches, timeouts
+# everywhere, build once + artefact, sharded e2e, runs-on switch between self-hosted and hosted.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  changes:
+    runs-on: ${{ ((vars.FLEET_RUNNER == 'self' || contains(github.event.pull_request.labels.*.name, 'ci:self')) && !contains(github.event.pull_request.labels.*.name, 'ci:hosted')) && fromJSON('["self-hosted","macOS","ARM64","fleet-ci"]') || 'ubuntu-latest' }}
+    timeout-minutes: 10
+    outputs:
+      web: ${{ steps.filter.outputs.web }}
+      admin: ${{ steps.filter.outputs.admin }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            web:
+              - 'apps/web/**'
+              - 'packages/**'
+            admin:
+              - 'apps/admin/**'
+              - 'packages/**'
+
+  lint:
+    needs: [changes]
+    runs-on: ${{ ((vars.FLEET_RUNNER == 'self' || contains(github.event.pull_request.labels.*.name, 'ci:self')) && !contains(github.event.pull_request.labels.*.name, 'ci:hosted')) && fromJSON('["self-hosted","macOS","ARM64","fleet-ci"]') || 'ubuntu-latest' }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        if: runner.environment == 'github-hosted'
+        with:
+          node-version: 24.10.0
+          cache: pnpm
+      - uses: actions/setup-node@v4
+        if: runner.environment != 'github-hosted'
+        with:
+          node-version: 24.10.0
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Lint and typecheck
+        run: pnpm lint && pnpm typecheck
+
+  build:
+    needs: [changes, lint]
+    if: needs.changes.outputs.web == 'true' || needs.changes.outputs.admin == 'true'
+    runs-on: ${{ ((vars.FLEET_RUNNER == 'self' || contains(github.event.pull_request.labels.*.name, 'ci:self')) && !contains(github.event.pull_request.labels.*.name, 'ci:hosted')) && fromJSON('["self-hosted","macOS","ARM64","fleet-ci"]') || 'ubuntu-latest' }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        if: runner.environment == 'github-hosted'
+        with:
+          node-version: 24.10.0
+          cache: pnpm
+      - uses: actions/setup-node@v4
+        if: runner.environment != 'github-hosted'
+        with:
+          node-version: 24.10.0
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: apps/*/.next
+          retention-days: 3
+
+  e2e:
+    needs: [changes, lint, build]
+    if: needs.changes.outputs.web == 'true'
+    runs-on: ${{ ((vars.FLEET_RUNNER == 'self' || contains(github.event.pull_request.labels.*.name, 'ci:self')) && !contains(github.event.pull_request.labels.*.name, 'ci:hosted')) && fromJSON('["self-hosted","macOS","ARM64","fleet-ci"]') || 'ubuntu-latest' }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        if: runner.environment == 'github-hosted'
+        with:
+          node-version: 24.10.0
+          cache: pnpm
+      - uses: actions/setup-node@v4
+        if: runner.environment != 'github-hosted'
+        with:
+          node-version: 24.10.0
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: build-output
+      - name: Playwright (chromium)
+        run: pnpm exec playwright test --project=chromium --shard=${{ matrix.shard }}/2
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: e2e-report-${{ matrix.shard }}
+          path: playwright-report
+          retention-days: 7

@@ -1,0 +1,13 @@
+# Fictional fixture: all the work happens in a reusable workflow in another repo.
+name: release
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  release:
+    uses: example-org/shared-workflows/.github/workflows/go-release.yml@v2
+    with:
+      go-version: "1.23"
+    permissions:
+      contents: write

@@ -40,9 +40,12 @@ jobs:
             node skills/homeactions/kit/render.mjs --profile "$p" --out "$out"
             node skills/homeactions/kit/render.mjs --profile "$p" --out "$out" --check
           done
-      - name: shellcheck the rendered kits and the repo scripts
+      - name: shellcheck the rendered kits and the repo's non-template scripts
+        # Kit templates contain {{ }} placeholders and are only meaningful once rendered, so they are
+        # checked through out/ (every fixture, every OS); scripts without placeholders are checked as-is.
         run: |
-          find out skills hooks scripts -name '*.sh' -print0 | xargs -0 shellcheck -S warning
+          find out -name '*.sh' -print0 | xargs -0 shellcheck -S warning
+          for f in $(git ls-files '*.sh'); do grep -q '{{' "$f" || shellcheck -S warning "$f"; done
       - name: Linux beta artefacts parse (systemd units, nftables rules)
         if: runner.os == 'Linux'
         run: |

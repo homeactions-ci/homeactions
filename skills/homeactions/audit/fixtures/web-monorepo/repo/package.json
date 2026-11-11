@@ -1,0 +1,1 @@
+{ "name": "web-monorepo", "private": true, "scripts": { "build": "turbo run build", "lint": "eslint .", "test": "vitest run" } }

@@ -1,0 +1,79 @@
+# Smoke test for the {{derived.banner}} self-hosted runner. Dispatch only:
+#   gh workflow run homeactions-runner-smoke.yml -f runner=hosted        # proves the workflow on ubuntu-latest
+#   gh workflow run homeactions-runner-smoke.yml -f runner=self          # host and isolation probes on the runner
+#   gh workflow run homeactions-runner-smoke.yml -f runner=offline-drill # labels no runner has: stays queued (watchdog drill)
+name: homeactions runner smoke
+
+on:
+  workflow_dispatch:
+    inputs:
+      runner:
+        description: "self = the {{tenant.name}} runner, hosted = ubuntu-latest, offline-drill = labels no runner has (watchdog drill)"
+        type: choice
+        options: [self, hosted, offline-drill]
+        default: hosted
+      inbound_probe_seconds:
+        description: "Seconds to keep a listener on a tenant port open for an inbound probe from another machine (0 = skip)"
+        type: number
+        default: 0
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ${{ inputs.runner == 'hosted' && 'ubuntu-latest' || fromJSON(inputs.runner == 'offline-drill' && '["{{join derived.selfLabels "\",\""}}","{{tenant.name}}-offline-drill"]' || '{{derived.selfLabelsJson}}') }}
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Host facts
+        run: |
+          echo "{{derived.banner}} smoke: ${RUNNER_ENVIRONMENT:-unknown} runner ${RUNNER_NAME:-?} (${RUNNER_OS}/${RUNNER_ARCH}) as $(id -un)"
+          echo "nproc: $(getconf _NPROCESSORS_ONLN 2>/dev/null || echo unknown)"
+          echo "ulimit -n: $(ulimit -n)"
+          df -h "${RUNNER_TEMP:-/tmp}" | tail -n 1
+          echo "TZ=${TZ:-unset} TMPDIR=${TMPDIR:-unset}"
+
+      - name: Isolation and host probes (self-hosted only)
+        if: runner.environment == 'self-hosted'
+        env:
+          INBOUND_PROBE_SECONDS: ${{ inputs.inbound_probe_seconds }}
+        run: bash "{{tenant.rootDir}}/smoke/smoke-probes.sh"
+
+      - name: Set up Node
+        if: ${{ fromJSON('{{json stack.runtimes}}').node != null }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ fromJSON('{{json stack.runtimes}}').node }}
+
+      - name: Set up Python
+        if: ${{ fromJSON('{{json stack.runtimes}}').python != null }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ fromJSON('{{json stack.runtimes}}').python }}
+
+      - name: Install (mirrors CI)
+        id: install
+        run: |
+          set -eu
+          case "{{stack.packageManager}}" in
+            pnpm) corepack enable && pnpm install --frozen-lockfile ;;
+            npm) npm ci ;;
+            yarn) corepack enable && (yarn install --immutable || yarn install --frozen-lockfile) ;;
+            bun) bun install --frozen-lockfile ;;
+            pip) if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; else python -m pip install -e .; fi ;;
+            poetry) python -m pip install poetry && poetry install --no-interaction ;;
+            uv) python -m pip install uv && uv sync --frozen ;;
+            go) go mod download ;;
+            cargo) cargo fetch ;;
+            *) echo "{{derived.banner}} smoke: no install step for package manager '{{stack.packageManager}}'" ;;
+          esac
+
+      - name: Toolchain report
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          for t in node npm pnpm yarn python3 go cargo; do
+            if command -v "$t" >/dev/null 2>&1; then echo "$t: $(command -v "$t") $("$t" --version 2>/dev/null | head -n 1)"; fi
+          done
+          echo "{{derived.banner}} smoke: install OK"

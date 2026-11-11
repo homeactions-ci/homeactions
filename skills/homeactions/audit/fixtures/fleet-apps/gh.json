@@ -1,0 +1,5519 @@
+{
+ "now": "2026-11-12T00:00:00Z",
+ "responses": {
+  "/repos/example-org/fleet-apps": {
+   "status": 200,
+   "body": {
+    "full_name": "example-org/fleet-apps",
+    "private": true,
+    "visibility": "private",
+    "default_branch": "main",
+    "owner": {
+     "login": "example-org",
+     "type": "Organization"
+    }
+   }
+  },
+  "/organizations/example-org/settings/billing/usage": {
+   "status": 200,
+   "body": {
+    "usageItems": [
+     {
+      "date": "2026-11-03T00:00:00Z",
+      "product": "actions",
+      "sku": "Actions Linux",
+      "quantity": 96,
+      "unitType": "Minutes",
+      "pricePerUnit": 0.006,
+      "grossAmount": 0.576,
+      "discountAmount": 0,
+      "netAmount": 0.576,
+      "organizationName": "example-org",
+      "repositoryName": "fleet-apps"
+     },
+     {
+      "date": "2026-10-20T00:00:00Z",
+      "product": "actions",
+      "sku": "Actions Linux",
+      "quantity": 40,
+      "unitType": "Minutes",
+      "pricePerUnit": 0.006,
+      "grossAmount": 0.24,
+      "discountAmount": 0,
+      "netAmount": 0.24,
+      "organizationName": "example-org",
+      "repositoryName": "fleet-apps"
+     },
+     {
+      "date": "2026-10-20T00:00:00Z",
+      "product": "actions",
+      "sku": "Actions Linux",
+      "quantity": 500,
+      "unitType": "Minutes",
+      "pricePerUnit": 0.006,
+      "grossAmount": 3,
+      "discountAmount": 0,
+      "netAmount": 3,
+      "organizationName": "example-org",
+      "repositoryName": "other-repo"
+     }
+    ]
+   }
+  },
+  "/organizations/example-org/settings/billing/budgets": {
+   "status": 200,
+   "body": {
+    "budgets": [
+     {
+      "id": "budget-1",
+      "budget_type": "ProductPricing",
+      "budget_product_sku": "actions",
+      "budget_scope": "organization",
+      "budget_amount": 50,
+      "prevent_further_usage": true,
+      "budget_alerting": {
+       "will_alert": true,
+       "alert_recipients": []
+      }
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs?page=1": {
+   "status": 200,
+   "body": {
+    "total_count": 38,
+    "workflow_runs": [
+     {
+      "id": 9100091,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-11T21:17:00Z",
+      "updated_at": "2026-11-11T21:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100092,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-11T18:17:00Z",
+      "updated_at": "2026-11-11T18:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100093,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-11T15:17:00Z",
+      "updated_at": "2026-11-11T15:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100094,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-11T12:17:00Z",
+      "updated_at": "2026-11-11T12:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100095,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-11T09:17:00Z",
+      "updated_at": "2026-11-11T09:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100096,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-11T06:17:00Z",
+      "updated_at": "2026-11-11T06:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100097,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-11T03:17:00Z",
+      "updated_at": "2026-11-11T03:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100098,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-11T00:17:00Z",
+      "updated_at": "2026-11-11T00:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100099,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-10T21:17:00Z",
+      "updated_at": "2026-11-10T21:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100100,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-10T18:17:00Z",
+      "updated_at": "2026-11-10T18:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100101,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-10T15:17:00Z",
+      "updated_at": "2026-11-10T15:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100102,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-10T12:17:00Z",
+      "updated_at": "2026-11-10T12:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100103,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-10T09:17:00Z",
+      "updated_at": "2026-11-10T09:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100104,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-10T06:17:00Z",
+      "updated_at": "2026-11-10T06:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100105,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-10T03:17:00Z",
+      "updated_at": "2026-11-10T03:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100106,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-10T00:17:00Z",
+      "updated_at": "2026-11-10T00:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100107,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-09T21:17:00Z",
+      "updated_at": "2026-11-09T21:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100108,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-09T18:17:00Z",
+      "updated_at": "2026-11-09T18:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100109,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-09T15:17:00Z",
+      "updated_at": "2026-11-09T15:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100110,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-09T12:17:00Z",
+      "updated_at": "2026-11-09T12:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100111,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-09T09:17:00Z",
+      "updated_at": "2026-11-09T09:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100112,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-09T06:17:00Z",
+      "updated_at": "2026-11-09T06:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100113,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-09T03:17:00Z",
+      "updated_at": "2026-11-09T03:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100114,
+      "name": "runner-watchdog.yml",
+      "path": ".github/workflows/runner-watchdog.yml",
+      "event": "schedule",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-09T00:17:00Z",
+      "updated_at": "2026-11-09T00:18:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100090,
+      "name": "pre-deploy.yml",
+      "path": ".github/workflows/pre-deploy.yml",
+      "event": "pull_request",
+      "head_branch": "feat-webkit",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-07T13:00:00Z",
+      "updated_at": "2026-11-07T13:22:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100086,
+      "name": "ci.yml",
+      "path": ".github/workflows/ci.yml",
+      "event": "push",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-05T11:00:00Z",
+      "updated_at": "2026-11-05T11:25:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100085,
+      "name": "ci.yml",
+      "path": ".github/workflows/ci.yml",
+      "event": "pull_request",
+      "head_branch": "feat-8",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-03T11:00:00Z",
+      "updated_at": "2026-11-03T11:25:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100089,
+      "name": "pre-deploy.yml",
+      "path": ".github/workflows/pre-deploy.yml",
+      "event": "pull_request",
+      "head_branch": "feat-webkit",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-02T13:00:00Z",
+      "updated_at": "2026-11-02T13:22:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100084,
+      "name": "ci.yml",
+      "path": ".github/workflows/ci.yml",
+      "event": "pull_request",
+      "head_branch": "feat-7",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-11-01T11:00:00Z",
+      "updated_at": "2026-11-01T11:25:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100083,
+      "name": "ci.yml",
+      "path": ".github/workflows/ci.yml",
+      "event": "push",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-30T11:00:00Z",
+      "updated_at": "2026-10-30T11:25:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100088,
+      "name": "pre-deploy.yml",
+      "path": ".github/workflows/pre-deploy.yml",
+      "event": "push",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-28T13:00:00Z",
+      "updated_at": "2026-10-28T13:22:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100082,
+      "name": "ci.yml",
+      "path": ".github/workflows/ci.yml",
+      "event": "pull_request",
+      "head_branch": "feat-5",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-28T11:00:00Z",
+      "updated_at": "2026-10-28T11:25:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100081,
+      "name": "ci.yml",
+      "path": ".github/workflows/ci.yml",
+      "event": "pull_request",
+      "head_branch": "feat-4",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-26T11:00:00Z",
+      "updated_at": "2026-10-26T11:25:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100080,
+      "name": "ci.yml",
+      "path": ".github/workflows/ci.yml",
+      "event": "push",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-24T11:00:00Z",
+      "updated_at": "2026-10-24T11:25:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100087,
+      "name": "pre-deploy.yml",
+      "path": ".github/workflows/pre-deploy.yml",
+      "event": "push",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-23T13:00:00Z",
+      "updated_at": "2026-10-23T13:22:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100079,
+      "name": "ci.yml",
+      "path": ".github/workflows/ci.yml",
+      "event": "pull_request",
+      "head_branch": "feat-2",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-22T11:00:00Z",
+      "updated_at": "2026-10-22T11:25:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100078,
+      "name": "ci.yml",
+      "path": ".github/workflows/ci.yml",
+      "event": "pull_request",
+      "head_branch": "feat-1",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-20T11:00:00Z",
+      "updated_at": "2026-10-20T11:25:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     },
+     {
+      "id": 9100077,
+      "name": "ci.yml",
+      "path": ".github/workflows/ci.yml",
+      "event": "push",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "created_at": "2026-10-18T11:00:00Z",
+      "updated_at": "2026-10-18T11:25:00Z",
+      "pull_requests": [],
+      "repository": {
+       "full_name": "example-org/fleet-apps"
+      }
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100077/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 5,
+    "jobs": [
+     {
+      "id": 51000413,
+      "run_id": 9100077,
+      "run_attempt": 1,
+      "name": "changes",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-18T11:00:00Z",
+      "started_at": "2026-10-18T11:00:12Z",
+      "completed_at": "2026-10-18T11:00:36Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-18T11:00:12Z",
+        "completed_at": "2026-10-18T11:00:16Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-18T11:00:16Z",
+        "completed_at": "2026-10-18T11:00:21Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-18T11:00:21Z",
+        "completed_at": "2026-10-18T11:00:26Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-18T11:00:26Z",
+        "completed_at": "2026-10-18T11:00:31Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-18T11:00:31Z",
+        "completed_at": "2026-10-18T11:00:36Z"
+       }
+      ]
+     },
+     {
+      "id": 51000414,
+      "run_id": 9100077,
+      "run_attempt": 1,
+      "name": "lint",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-18T11:00:00Z",
+      "started_at": "2026-10-18T11:01:00Z",
+      "completed_at": "2026-10-18T11:04:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-18T11:01:00Z",
+        "completed_at": "2026-10-18T11:01:36Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-18T11:01:36Z",
+        "completed_at": "2026-10-18T11:02:12Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-18T11:02:12Z",
+        "completed_at": "2026-10-18T11:02:48Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-18T11:02:48Z",
+        "completed_at": "2026-10-18T11:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-18T11:03:24Z",
+        "completed_at": "2026-10-18T11:04:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000415,
+      "run_id": 9100077,
+      "run_attempt": 1,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-18T11:00:00Z",
+      "started_at": "2026-10-18T11:04:00Z",
+      "completed_at": "2026-10-18T11:10:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-18T11:04:00Z",
+        "completed_at": "2026-10-18T11:05:30Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-18T11:05:30Z",
+        "completed_at": "2026-10-18T11:07:00Z"
+       },
+       {
+        "name": "Build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-18T11:07:00Z",
+        "completed_at": "2026-10-18T11:08:30Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-18T11:08:30Z",
+        "completed_at": "2026-10-18T11:10:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000416,
+      "run_id": 9100077,
+      "run_attempt": 1,
+      "name": "e2e (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-18T11:00:00Z",
+      "started_at": "2026-10-18T11:11:00Z",
+      "completed_at": "2026-10-18T11:22:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-18T11:11:00Z",
+        "completed_at": "2026-10-18T11:13:12Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-18T11:13:12Z",
+        "completed_at": "2026-10-18T11:15:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-18T11:15:24Z",
+        "completed_at": "2026-10-18T11:17:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-18T11:17:36Z",
+        "completed_at": "2026-10-18T11:19:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-18T11:19:48Z",
+        "completed_at": "2026-10-18T11:22:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000417,
+      "run_id": 9100077,
+      "run_attempt": 1,
+      "name": "e2e (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-18T11:00:00Z",
+      "started_at": "2026-10-18T11:22:00Z",
+      "completed_at": "2026-10-18T11:32:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-18T11:22:00Z",
+        "completed_at": "2026-10-18T11:24:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-18T11:24:00Z",
+        "completed_at": "2026-10-18T11:26:00Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-18T11:26:00Z",
+        "completed_at": "2026-10-18T11:28:00Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-18T11:28:00Z",
+        "completed_at": "2026-10-18T11:30:00Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-18T11:30:00Z",
+        "completed_at": "2026-10-18T11:32:00Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100078/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 5,
+    "jobs": [
+     {
+      "id": 51000418,
+      "run_id": 9100078,
+      "run_attempt": 1,
+      "name": "changes",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-20T11:00:00Z",
+      "started_at": "2026-10-20T11:00:12Z",
+      "completed_at": "2026-10-20T11:00:36Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-20T11:00:12Z",
+        "completed_at": "2026-10-20T11:00:16Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-20T11:00:16Z",
+        "completed_at": "2026-10-20T11:00:21Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-20T11:00:21Z",
+        "completed_at": "2026-10-20T11:00:26Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-20T11:00:26Z",
+        "completed_at": "2026-10-20T11:00:31Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-20T11:00:31Z",
+        "completed_at": "2026-10-20T11:00:36Z"
+       }
+      ]
+     },
+     {
+      "id": 51000419,
+      "run_id": 9100078,
+      "run_attempt": 1,
+      "name": "lint",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-20T11:00:00Z",
+      "started_at": "2026-10-20T11:01:00Z",
+      "completed_at": "2026-10-20T11:04:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-20T11:01:00Z",
+        "completed_at": "2026-10-20T11:01:36Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-20T11:01:36Z",
+        "completed_at": "2026-10-20T11:02:12Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-20T11:02:12Z",
+        "completed_at": "2026-10-20T11:02:48Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-20T11:02:48Z",
+        "completed_at": "2026-10-20T11:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-20T11:03:24Z",
+        "completed_at": "2026-10-20T11:04:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000420,
+      "run_id": 9100078,
+      "run_attempt": 1,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-20T11:00:00Z",
+      "started_at": "2026-10-20T11:04:00Z",
+      "completed_at": "2026-10-20T11:10:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-20T11:04:00Z",
+        "completed_at": "2026-10-20T11:05:30Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-20T11:05:30Z",
+        "completed_at": "2026-10-20T11:07:00Z"
+       },
+       {
+        "name": "Build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-20T11:07:00Z",
+        "completed_at": "2026-10-20T11:08:30Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-20T11:08:30Z",
+        "completed_at": "2026-10-20T11:10:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000421,
+      "run_id": 9100078,
+      "run_attempt": 1,
+      "name": "e2e (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-20T11:00:00Z",
+      "started_at": "2026-10-20T11:11:00Z",
+      "completed_at": "2026-10-20T11:22:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-20T11:11:00Z",
+        "completed_at": "2026-10-20T11:13:12Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-20T11:13:12Z",
+        "completed_at": "2026-10-20T11:15:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-20T11:15:24Z",
+        "completed_at": "2026-10-20T11:17:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-20T11:17:36Z",
+        "completed_at": "2026-10-20T11:19:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-20T11:19:48Z",
+        "completed_at": "2026-10-20T11:22:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000422,
+      "run_id": 9100078,
+      "run_attempt": 1,
+      "name": "e2e (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-20T11:00:00Z",
+      "started_at": "2026-10-20T11:22:00Z",
+      "completed_at": "2026-10-20T11:32:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-20T11:22:00Z",
+        "completed_at": "2026-10-20T11:24:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-20T11:24:00Z",
+        "completed_at": "2026-10-20T11:26:00Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-20T11:26:00Z",
+        "completed_at": "2026-10-20T11:28:00Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-20T11:28:00Z",
+        "completed_at": "2026-10-20T11:30:00Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-20T11:30:00Z",
+        "completed_at": "2026-10-20T11:32:00Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100079/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 5,
+    "jobs": [
+     {
+      "id": 51000423,
+      "run_id": 9100079,
+      "run_attempt": 1,
+      "name": "changes",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T11:00:00Z",
+      "started_at": "2026-10-22T11:00:12Z",
+      "completed_at": "2026-10-22T11:00:36Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-22T11:00:12Z",
+        "completed_at": "2026-10-22T11:00:16Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-22T11:00:16Z",
+        "completed_at": "2026-10-22T11:00:21Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-22T11:00:21Z",
+        "completed_at": "2026-10-22T11:00:26Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-22T11:00:26Z",
+        "completed_at": "2026-10-22T11:00:31Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-22T11:00:31Z",
+        "completed_at": "2026-10-22T11:00:36Z"
+       }
+      ]
+     },
+     {
+      "id": 51000424,
+      "run_id": 9100079,
+      "run_attempt": 1,
+      "name": "lint",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T11:00:00Z",
+      "started_at": "2026-10-22T11:01:00Z",
+      "completed_at": "2026-10-22T11:04:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-22T11:01:00Z",
+        "completed_at": "2026-10-22T11:01:36Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-22T11:01:36Z",
+        "completed_at": "2026-10-22T11:02:12Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-22T11:02:12Z",
+        "completed_at": "2026-10-22T11:02:48Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-22T11:02:48Z",
+        "completed_at": "2026-10-22T11:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-22T11:03:24Z",
+        "completed_at": "2026-10-22T11:04:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000425,
+      "run_id": 9100079,
+      "run_attempt": 1,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T11:00:00Z",
+      "started_at": "2026-10-22T11:04:00Z",
+      "completed_at": "2026-10-22T11:10:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-22T11:04:00Z",
+        "completed_at": "2026-10-22T11:05:30Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-22T11:05:30Z",
+        "completed_at": "2026-10-22T11:07:00Z"
+       },
+       {
+        "name": "Build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-22T11:07:00Z",
+        "completed_at": "2026-10-22T11:08:30Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-22T11:08:30Z",
+        "completed_at": "2026-10-22T11:10:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000426,
+      "run_id": 9100079,
+      "run_attempt": 1,
+      "name": "e2e (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T11:00:00Z",
+      "started_at": "2026-10-22T11:11:00Z",
+      "completed_at": "2026-10-22T11:22:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-22T11:11:00Z",
+        "completed_at": "2026-10-22T11:13:12Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-22T11:13:12Z",
+        "completed_at": "2026-10-22T11:15:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-22T11:15:24Z",
+        "completed_at": "2026-10-22T11:17:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-22T11:17:36Z",
+        "completed_at": "2026-10-22T11:19:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-22T11:19:48Z",
+        "completed_at": "2026-10-22T11:22:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000427,
+      "run_id": 9100079,
+      "run_attempt": 1,
+      "name": "e2e (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-22T11:00:00Z",
+      "started_at": "2026-10-22T11:22:00Z",
+      "completed_at": "2026-10-22T11:32:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-22T11:22:00Z",
+        "completed_at": "2026-10-22T11:24:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-22T11:24:00Z",
+        "completed_at": "2026-10-22T11:26:00Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-22T11:26:00Z",
+        "completed_at": "2026-10-22T11:28:00Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-22T11:28:00Z",
+        "completed_at": "2026-10-22T11:30:00Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-22T11:30:00Z",
+        "completed_at": "2026-10-22T11:32:00Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100080/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 5,
+    "jobs": [
+     {
+      "id": 51000428,
+      "run_id": 9100080,
+      "run_attempt": 1,
+      "name": "changes",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-24T11:00:00Z",
+      "started_at": "2026-10-24T11:00:12Z",
+      "completed_at": "2026-10-24T11:00:36Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-24T11:00:12Z",
+        "completed_at": "2026-10-24T11:00:16Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-24T11:00:16Z",
+        "completed_at": "2026-10-24T11:00:21Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-24T11:00:21Z",
+        "completed_at": "2026-10-24T11:00:26Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-24T11:00:26Z",
+        "completed_at": "2026-10-24T11:00:31Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-24T11:00:31Z",
+        "completed_at": "2026-10-24T11:00:36Z"
+       }
+      ]
+     },
+     {
+      "id": 51000429,
+      "run_id": 9100080,
+      "run_attempt": 1,
+      "name": "lint",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-24T11:00:00Z",
+      "started_at": "2026-10-24T11:01:00Z",
+      "completed_at": "2026-10-24T11:04:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-24T11:01:00Z",
+        "completed_at": "2026-10-24T11:01:36Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-24T11:01:36Z",
+        "completed_at": "2026-10-24T11:02:12Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-24T11:02:12Z",
+        "completed_at": "2026-10-24T11:02:48Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-24T11:02:48Z",
+        "completed_at": "2026-10-24T11:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-24T11:03:24Z",
+        "completed_at": "2026-10-24T11:04:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000430,
+      "run_id": 9100080,
+      "run_attempt": 1,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-24T11:00:00Z",
+      "started_at": "2026-10-24T11:04:00Z",
+      "completed_at": "2026-10-24T11:10:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-24T11:04:00Z",
+        "completed_at": "2026-10-24T11:05:30Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-24T11:05:30Z",
+        "completed_at": "2026-10-24T11:07:00Z"
+       },
+       {
+        "name": "Build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-24T11:07:00Z",
+        "completed_at": "2026-10-24T11:08:30Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-24T11:08:30Z",
+        "completed_at": "2026-10-24T11:10:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000431,
+      "run_id": 9100080,
+      "run_attempt": 1,
+      "name": "e2e (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-24T11:00:00Z",
+      "started_at": "2026-10-24T11:11:00Z",
+      "completed_at": "2026-10-24T11:22:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-24T11:11:00Z",
+        "completed_at": "2026-10-24T11:13:12Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-24T11:13:12Z",
+        "completed_at": "2026-10-24T11:15:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-24T11:15:24Z",
+        "completed_at": "2026-10-24T11:17:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-24T11:17:36Z",
+        "completed_at": "2026-10-24T11:19:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-24T11:19:48Z",
+        "completed_at": "2026-10-24T11:22:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000432,
+      "run_id": 9100080,
+      "run_attempt": 1,
+      "name": "e2e (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-24T11:00:00Z",
+      "started_at": "2026-10-24T11:22:00Z",
+      "completed_at": "2026-10-24T11:32:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-24T11:22:00Z",
+        "completed_at": "2026-10-24T11:24:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-24T11:24:00Z",
+        "completed_at": "2026-10-24T11:26:00Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-24T11:26:00Z",
+        "completed_at": "2026-10-24T11:28:00Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-24T11:28:00Z",
+        "completed_at": "2026-10-24T11:30:00Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-24T11:30:00Z",
+        "completed_at": "2026-10-24T11:32:00Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100081/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 5,
+    "jobs": [
+     {
+      "id": 51000433,
+      "run_id": 9100081,
+      "run_attempt": 1,
+      "name": "changes",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-26T11:00:00Z",
+      "started_at": "2026-10-26T11:00:12Z",
+      "completed_at": "2026-10-26T11:00:36Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-26T11:00:12Z",
+        "completed_at": "2026-10-26T11:00:16Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-26T11:00:16Z",
+        "completed_at": "2026-10-26T11:00:21Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-26T11:00:21Z",
+        "completed_at": "2026-10-26T11:00:26Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-26T11:00:26Z",
+        "completed_at": "2026-10-26T11:00:31Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-26T11:00:31Z",
+        "completed_at": "2026-10-26T11:00:36Z"
+       }
+      ]
+     },
+     {
+      "id": 51000434,
+      "run_id": 9100081,
+      "run_attempt": 1,
+      "name": "lint",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-26T11:00:00Z",
+      "started_at": "2026-10-26T11:01:00Z",
+      "completed_at": "2026-10-26T11:04:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-26T11:01:00Z",
+        "completed_at": "2026-10-26T11:01:36Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-26T11:01:36Z",
+        "completed_at": "2026-10-26T11:02:12Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-26T11:02:12Z",
+        "completed_at": "2026-10-26T11:02:48Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-26T11:02:48Z",
+        "completed_at": "2026-10-26T11:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-26T11:03:24Z",
+        "completed_at": "2026-10-26T11:04:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000435,
+      "run_id": 9100081,
+      "run_attempt": 1,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-26T11:00:00Z",
+      "started_at": "2026-10-26T11:04:00Z",
+      "completed_at": "2026-10-26T11:10:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-26T11:04:00Z",
+        "completed_at": "2026-10-26T11:05:30Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-26T11:05:30Z",
+        "completed_at": "2026-10-26T11:07:00Z"
+       },
+       {
+        "name": "Build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-26T11:07:00Z",
+        "completed_at": "2026-10-26T11:08:30Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-26T11:08:30Z",
+        "completed_at": "2026-10-26T11:10:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000436,
+      "run_id": 9100081,
+      "run_attempt": 1,
+      "name": "e2e (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-26T11:00:00Z",
+      "started_at": "2026-10-26T11:11:00Z",
+      "completed_at": "2026-10-26T11:22:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-26T11:11:00Z",
+        "completed_at": "2026-10-26T11:13:12Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-26T11:13:12Z",
+        "completed_at": "2026-10-26T11:15:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-26T11:15:24Z",
+        "completed_at": "2026-10-26T11:17:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-26T11:17:36Z",
+        "completed_at": "2026-10-26T11:19:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-26T11:19:48Z",
+        "completed_at": "2026-10-26T11:22:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000437,
+      "run_id": 9100081,
+      "run_attempt": 1,
+      "name": "e2e (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-26T11:00:00Z",
+      "started_at": "2026-10-26T11:22:00Z",
+      "completed_at": "2026-10-26T11:32:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-26T11:22:00Z",
+        "completed_at": "2026-10-26T11:24:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-26T11:24:00Z",
+        "completed_at": "2026-10-26T11:26:00Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-26T11:26:00Z",
+        "completed_at": "2026-10-26T11:28:00Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-26T11:28:00Z",
+        "completed_at": "2026-10-26T11:30:00Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-26T11:30:00Z",
+        "completed_at": "2026-10-26T11:32:00Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100082/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 5,
+    "jobs": [
+     {
+      "id": 51000438,
+      "run_id": 9100082,
+      "run_attempt": 1,
+      "name": "changes",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-28T11:00:00Z",
+      "started_at": "2026-10-28T11:00:12Z",
+      "completed_at": "2026-10-28T11:00:36Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-28T11:00:12Z",
+        "completed_at": "2026-10-28T11:00:16Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-28T11:00:16Z",
+        "completed_at": "2026-10-28T11:00:21Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-28T11:00:21Z",
+        "completed_at": "2026-10-28T11:00:26Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-28T11:00:26Z",
+        "completed_at": "2026-10-28T11:00:31Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-28T11:00:31Z",
+        "completed_at": "2026-10-28T11:00:36Z"
+       }
+      ]
+     },
+     {
+      "id": 51000439,
+      "run_id": 9100082,
+      "run_attempt": 1,
+      "name": "lint",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-28T11:00:00Z",
+      "started_at": "2026-10-28T11:01:00Z",
+      "completed_at": "2026-10-28T11:04:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-28T11:01:00Z",
+        "completed_at": "2026-10-28T11:01:36Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-28T11:01:36Z",
+        "completed_at": "2026-10-28T11:02:12Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-28T11:02:12Z",
+        "completed_at": "2026-10-28T11:02:48Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-28T11:02:48Z",
+        "completed_at": "2026-10-28T11:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-28T11:03:24Z",
+        "completed_at": "2026-10-28T11:04:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000440,
+      "run_id": 9100082,
+      "run_attempt": 1,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-28T11:00:00Z",
+      "started_at": "2026-10-28T11:04:00Z",
+      "completed_at": "2026-10-28T11:10:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-28T11:04:00Z",
+        "completed_at": "2026-10-28T11:05:30Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-28T11:05:30Z",
+        "completed_at": "2026-10-28T11:07:00Z"
+       },
+       {
+        "name": "Build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-28T11:07:00Z",
+        "completed_at": "2026-10-28T11:08:30Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-28T11:08:30Z",
+        "completed_at": "2026-10-28T11:10:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000441,
+      "run_id": 9100082,
+      "run_attempt": 1,
+      "name": "e2e (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-28T11:00:00Z",
+      "started_at": "2026-10-28T11:11:00Z",
+      "completed_at": "2026-10-28T11:22:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-28T11:11:00Z",
+        "completed_at": "2026-10-28T11:13:12Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-28T11:13:12Z",
+        "completed_at": "2026-10-28T11:15:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-28T11:15:24Z",
+        "completed_at": "2026-10-28T11:17:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-28T11:17:36Z",
+        "completed_at": "2026-10-28T11:19:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-28T11:19:48Z",
+        "completed_at": "2026-10-28T11:22:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000442,
+      "run_id": 9100082,
+      "run_attempt": 1,
+      "name": "e2e (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-28T11:00:00Z",
+      "started_at": "2026-10-28T11:22:00Z",
+      "completed_at": "2026-10-28T11:32:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-28T11:22:00Z",
+        "completed_at": "2026-10-28T11:24:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-28T11:24:00Z",
+        "completed_at": "2026-10-28T11:26:00Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-28T11:26:00Z",
+        "completed_at": "2026-10-28T11:28:00Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-28T11:28:00Z",
+        "completed_at": "2026-10-28T11:30:00Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-28T11:30:00Z",
+        "completed_at": "2026-10-28T11:32:00Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100083/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 5,
+    "jobs": [
+     {
+      "id": 51000443,
+      "run_id": 9100083,
+      "run_attempt": 1,
+      "name": "changes",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-30T11:00:00Z",
+      "started_at": "2026-10-30T11:00:12Z",
+      "completed_at": "2026-10-30T11:00:36Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-30T11:00:12Z",
+        "completed_at": "2026-10-30T11:00:16Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-30T11:00:16Z",
+        "completed_at": "2026-10-30T11:00:21Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-30T11:00:21Z",
+        "completed_at": "2026-10-30T11:00:26Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-30T11:00:26Z",
+        "completed_at": "2026-10-30T11:00:31Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-30T11:00:31Z",
+        "completed_at": "2026-10-30T11:00:36Z"
+       }
+      ]
+     },
+     {
+      "id": 51000444,
+      "run_id": 9100083,
+      "run_attempt": 1,
+      "name": "lint",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-30T11:00:00Z",
+      "started_at": "2026-10-30T11:01:00Z",
+      "completed_at": "2026-10-30T11:04:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-30T11:01:00Z",
+        "completed_at": "2026-10-30T11:01:36Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-30T11:01:36Z",
+        "completed_at": "2026-10-30T11:02:12Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-30T11:02:12Z",
+        "completed_at": "2026-10-30T11:02:48Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-30T11:02:48Z",
+        "completed_at": "2026-10-30T11:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-30T11:03:24Z",
+        "completed_at": "2026-10-30T11:04:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000445,
+      "run_id": 9100083,
+      "run_attempt": 1,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-30T11:00:00Z",
+      "started_at": "2026-10-30T11:04:00Z",
+      "completed_at": "2026-10-30T11:10:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-30T11:04:00Z",
+        "completed_at": "2026-10-30T11:05:30Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-30T11:05:30Z",
+        "completed_at": "2026-10-30T11:07:00Z"
+       },
+       {
+        "name": "Build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-30T11:07:00Z",
+        "completed_at": "2026-10-30T11:08:30Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-30T11:08:30Z",
+        "completed_at": "2026-10-30T11:10:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000446,
+      "run_id": 9100083,
+      "run_attempt": 1,
+      "name": "e2e (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-30T11:00:00Z",
+      "started_at": "2026-10-30T11:11:00Z",
+      "completed_at": "2026-10-30T11:22:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-30T11:11:00Z",
+        "completed_at": "2026-10-30T11:13:12Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-30T11:13:12Z",
+        "completed_at": "2026-10-30T11:15:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-30T11:15:24Z",
+        "completed_at": "2026-10-30T11:17:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-30T11:17:36Z",
+        "completed_at": "2026-10-30T11:19:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-30T11:19:48Z",
+        "completed_at": "2026-10-30T11:22:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000447,
+      "run_id": 9100083,
+      "run_attempt": 1,
+      "name": "e2e (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-30T11:00:00Z",
+      "started_at": "2026-10-30T11:22:00Z",
+      "completed_at": "2026-10-30T11:32:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-30T11:22:00Z",
+        "completed_at": "2026-10-30T11:24:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-30T11:24:00Z",
+        "completed_at": "2026-10-30T11:26:00Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-30T11:26:00Z",
+        "completed_at": "2026-10-30T11:28:00Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-30T11:28:00Z",
+        "completed_at": "2026-10-30T11:30:00Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-30T11:30:00Z",
+        "completed_at": "2026-10-30T11:32:00Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100084/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 5,
+    "jobs": [
+     {
+      "id": 51000448,
+      "run_id": 9100084,
+      "run_attempt": 1,
+      "name": "changes",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-01T11:00:00Z",
+      "started_at": "2026-11-01T11:00:12Z",
+      "completed_at": "2026-11-01T11:00:36Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-01T11:00:12Z",
+        "completed_at": "2026-11-01T11:00:16Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-01T11:00:16Z",
+        "completed_at": "2026-11-01T11:00:21Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-01T11:00:21Z",
+        "completed_at": "2026-11-01T11:00:26Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-01T11:00:26Z",
+        "completed_at": "2026-11-01T11:00:31Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-01T11:00:31Z",
+        "completed_at": "2026-11-01T11:00:36Z"
+       }
+      ]
+     },
+     {
+      "id": 51000449,
+      "run_id": 9100084,
+      "run_attempt": 1,
+      "name": "lint",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-01T11:00:00Z",
+      "started_at": "2026-11-01T11:01:00Z",
+      "completed_at": "2026-11-01T11:04:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-01T11:01:00Z",
+        "completed_at": "2026-11-01T11:01:36Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-01T11:01:36Z",
+        "completed_at": "2026-11-01T11:02:12Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-01T11:02:12Z",
+        "completed_at": "2026-11-01T11:02:48Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-01T11:02:48Z",
+        "completed_at": "2026-11-01T11:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-01T11:03:24Z",
+        "completed_at": "2026-11-01T11:04:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000450,
+      "run_id": 9100084,
+      "run_attempt": 1,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-01T11:00:00Z",
+      "started_at": "2026-11-01T11:04:00Z",
+      "completed_at": "2026-11-01T11:10:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-01T11:04:00Z",
+        "completed_at": "2026-11-01T11:05:30Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-01T11:05:30Z",
+        "completed_at": "2026-11-01T11:07:00Z"
+       },
+       {
+        "name": "Build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-01T11:07:00Z",
+        "completed_at": "2026-11-01T11:08:30Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-01T11:08:30Z",
+        "completed_at": "2026-11-01T11:10:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000451,
+      "run_id": 9100084,
+      "run_attempt": 1,
+      "name": "e2e (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-01T11:00:00Z",
+      "started_at": "2026-11-01T11:11:00Z",
+      "completed_at": "2026-11-01T11:22:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-01T11:11:00Z",
+        "completed_at": "2026-11-01T11:13:12Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-01T11:13:12Z",
+        "completed_at": "2026-11-01T11:15:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-01T11:15:24Z",
+        "completed_at": "2026-11-01T11:17:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-01T11:17:36Z",
+        "completed_at": "2026-11-01T11:19:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-01T11:19:48Z",
+        "completed_at": "2026-11-01T11:22:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000452,
+      "run_id": 9100084,
+      "run_attempt": 1,
+      "name": "e2e (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-01T11:00:00Z",
+      "started_at": "2026-11-01T11:22:00Z",
+      "completed_at": "2026-11-01T11:32:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-01T11:22:00Z",
+        "completed_at": "2026-11-01T11:24:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-01T11:24:00Z",
+        "completed_at": "2026-11-01T11:26:00Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-01T11:26:00Z",
+        "completed_at": "2026-11-01T11:28:00Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-01T11:28:00Z",
+        "completed_at": "2026-11-01T11:30:00Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-01T11:30:00Z",
+        "completed_at": "2026-11-01T11:32:00Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100085/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 5,
+    "jobs": [
+     {
+      "id": 51000453,
+      "run_id": 9100085,
+      "run_attempt": 1,
+      "name": "changes",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-03T11:00:00Z",
+      "started_at": "2026-11-03T11:00:12Z",
+      "completed_at": "2026-11-03T11:00:36Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-03T11:00:12Z",
+        "completed_at": "2026-11-03T11:00:16Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-03T11:00:16Z",
+        "completed_at": "2026-11-03T11:00:21Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-03T11:00:21Z",
+        "completed_at": "2026-11-03T11:00:26Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-03T11:00:26Z",
+        "completed_at": "2026-11-03T11:00:31Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-03T11:00:31Z",
+        "completed_at": "2026-11-03T11:00:36Z"
+       }
+      ]
+     },
+     {
+      "id": 51000454,
+      "run_id": 9100085,
+      "run_attempt": 1,
+      "name": "lint",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-03T11:00:00Z",
+      "started_at": "2026-11-03T11:01:00Z",
+      "completed_at": "2026-11-03T11:04:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-03T11:01:00Z",
+        "completed_at": "2026-11-03T11:01:36Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-03T11:01:36Z",
+        "completed_at": "2026-11-03T11:02:12Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-03T11:02:12Z",
+        "completed_at": "2026-11-03T11:02:48Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-03T11:02:48Z",
+        "completed_at": "2026-11-03T11:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-03T11:03:24Z",
+        "completed_at": "2026-11-03T11:04:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000455,
+      "run_id": 9100085,
+      "run_attempt": 1,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-03T11:00:00Z",
+      "started_at": "2026-11-03T11:04:00Z",
+      "completed_at": "2026-11-03T11:10:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-03T11:04:00Z",
+        "completed_at": "2026-11-03T11:05:30Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-03T11:05:30Z",
+        "completed_at": "2026-11-03T11:07:00Z"
+       },
+       {
+        "name": "Build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-03T11:07:00Z",
+        "completed_at": "2026-11-03T11:08:30Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-03T11:08:30Z",
+        "completed_at": "2026-11-03T11:10:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000456,
+      "run_id": 9100085,
+      "run_attempt": 1,
+      "name": "e2e (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-03T11:00:00Z",
+      "started_at": "2026-11-03T11:11:00Z",
+      "completed_at": "2026-11-03T11:22:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-03T11:11:00Z",
+        "completed_at": "2026-11-03T11:13:12Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-03T11:13:12Z",
+        "completed_at": "2026-11-03T11:15:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-03T11:15:24Z",
+        "completed_at": "2026-11-03T11:17:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-03T11:17:36Z",
+        "completed_at": "2026-11-03T11:19:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-03T11:19:48Z",
+        "completed_at": "2026-11-03T11:22:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000457,
+      "run_id": 9100085,
+      "run_attempt": 1,
+      "name": "e2e (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-03T11:00:00Z",
+      "started_at": "2026-11-03T11:22:00Z",
+      "completed_at": "2026-11-03T11:32:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-03T11:22:00Z",
+        "completed_at": "2026-11-03T11:24:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-03T11:24:00Z",
+        "completed_at": "2026-11-03T11:26:00Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-03T11:26:00Z",
+        "completed_at": "2026-11-03T11:28:00Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-03T11:28:00Z",
+        "completed_at": "2026-11-03T11:30:00Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-03T11:30:00Z",
+        "completed_at": "2026-11-03T11:32:00Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100086/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 5,
+    "jobs": [
+     {
+      "id": 51000458,
+      "run_id": 9100086,
+      "run_attempt": 1,
+      "name": "changes",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-05T11:00:00Z",
+      "started_at": "2026-11-05T11:00:12Z",
+      "completed_at": "2026-11-05T11:00:36Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-05T11:00:12Z",
+        "completed_at": "2026-11-05T11:00:16Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-05T11:00:16Z",
+        "completed_at": "2026-11-05T11:00:21Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-05T11:00:21Z",
+        "completed_at": "2026-11-05T11:00:26Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-05T11:00:26Z",
+        "completed_at": "2026-11-05T11:00:31Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-05T11:00:31Z",
+        "completed_at": "2026-11-05T11:00:36Z"
+       }
+      ]
+     },
+     {
+      "id": 51000459,
+      "run_id": 9100086,
+      "run_attempt": 1,
+      "name": "lint",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-05T11:00:00Z",
+      "started_at": "2026-11-05T11:01:00Z",
+      "completed_at": "2026-11-05T11:04:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-05T11:01:00Z",
+        "completed_at": "2026-11-05T11:01:36Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-05T11:01:36Z",
+        "completed_at": "2026-11-05T11:02:12Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-05T11:02:12Z",
+        "completed_at": "2026-11-05T11:02:48Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-05T11:02:48Z",
+        "completed_at": "2026-11-05T11:03:24Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-05T11:03:24Z",
+        "completed_at": "2026-11-05T11:04:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000460,
+      "run_id": 9100086,
+      "run_attempt": 1,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-05T11:00:00Z",
+      "started_at": "2026-11-05T11:04:00Z",
+      "completed_at": "2026-11-05T11:10:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-05T11:04:00Z",
+        "completed_at": "2026-11-05T11:05:30Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-05T11:05:30Z",
+        "completed_at": "2026-11-05T11:07:00Z"
+       },
+       {
+        "name": "Build",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-05T11:07:00Z",
+        "completed_at": "2026-11-05T11:08:30Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-05T11:08:30Z",
+        "completed_at": "2026-11-05T11:10:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000461,
+      "run_id": 9100086,
+      "run_attempt": 1,
+      "name": "e2e (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-05T11:00:00Z",
+      "started_at": "2026-11-05T11:11:00Z",
+      "completed_at": "2026-11-05T11:22:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-05T11:11:00Z",
+        "completed_at": "2026-11-05T11:13:12Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-05T11:13:12Z",
+        "completed_at": "2026-11-05T11:15:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-05T11:15:24Z",
+        "completed_at": "2026-11-05T11:17:36Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-05T11:17:36Z",
+        "completed_at": "2026-11-05T11:19:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-05T11:19:48Z",
+        "completed_at": "2026-11-05T11:22:00Z"
+       }
+      ]
+     },
+     {
+      "id": 51000462,
+      "run_id": 9100086,
+      "run_attempt": 1,
+      "name": "e2e (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-05T11:00:00Z",
+      "started_at": "2026-11-05T11:22:00Z",
+      "completed_at": "2026-11-05T11:32:00Z",
+      "labels": [
+       "self-hosted",
+       "macOS",
+       "ARM64",
+       "fleet-ci"
+      ],
+      "runner_name": "fleet-box-1",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-05T11:22:00Z",
+        "completed_at": "2026-11-05T11:24:00Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-05T11:24:00Z",
+        "completed_at": "2026-11-05T11:26:00Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-05T11:26:00Z",
+        "completed_at": "2026-11-05T11:28:00Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-05T11:28:00Z",
+        "completed_at": "2026-11-05T11:30:00Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-05T11:30:00Z",
+        "completed_at": "2026-11-05T11:32:00Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100087/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000463,
+      "run_id": 9100087,
+      "run_attempt": 1,
+      "name": "webkit",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-23T13:00:00Z",
+      "started_at": "2026-10-23T13:00:12Z",
+      "completed_at": "2026-10-23T13:12:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-23T13:00:12Z",
+        "completed_at": "2026-10-23T13:02:36Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-23T13:02:36Z",
+        "completed_at": "2026-10-23T13:05:00Z"
+       },
+       {
+        "name": "Browsers",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-23T13:05:00Z",
+        "completed_at": "2026-10-23T13:07:24Z"
+       },
+       {
+        "name": "Playwright (webkit)",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-23T13:07:24Z",
+        "completed_at": "2026-10-23T13:09:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-23T13:09:48Z",
+        "completed_at": "2026-10-23T13:12:12Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100088/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000464,
+      "run_id": 9100088,
+      "run_attempt": 1,
+      "name": "webkit",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-28T13:00:00Z",
+      "started_at": "2026-10-28T13:00:12Z",
+      "completed_at": "2026-10-28T13:12:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-10-28T13:00:12Z",
+        "completed_at": "2026-10-28T13:02:36Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-10-28T13:02:36Z",
+        "completed_at": "2026-10-28T13:05:00Z"
+       },
+       {
+        "name": "Browsers",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-10-28T13:05:00Z",
+        "completed_at": "2026-10-28T13:07:24Z"
+       },
+       {
+        "name": "Playwright (webkit)",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-10-28T13:07:24Z",
+        "completed_at": "2026-10-28T13:09:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-10-28T13:09:48Z",
+        "completed_at": "2026-10-28T13:12:12Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100089/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000465,
+      "run_id": 9100089,
+      "run_attempt": 1,
+      "name": "webkit",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-02T13:00:00Z",
+      "started_at": "2026-11-02T13:00:12Z",
+      "completed_at": "2026-11-02T13:12:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-02T13:00:12Z",
+        "completed_at": "2026-11-02T13:02:36Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-02T13:02:36Z",
+        "completed_at": "2026-11-02T13:05:00Z"
+       },
+       {
+        "name": "Browsers",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-02T13:05:00Z",
+        "completed_at": "2026-11-02T13:07:24Z"
+       },
+       {
+        "name": "Playwright (webkit)",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-02T13:07:24Z",
+        "completed_at": "2026-11-02T13:09:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-02T13:09:48Z",
+        "completed_at": "2026-11-02T13:12:12Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100090/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000466,
+      "run_id": 9100090,
+      "run_attempt": 1,
+      "name": "webkit",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-07T13:00:00Z",
+      "started_at": "2026-11-07T13:00:12Z",
+      "completed_at": "2026-11-07T13:12:12Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-07T13:00:12Z",
+        "completed_at": "2026-11-07T13:02:36Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-07T13:02:36Z",
+        "completed_at": "2026-11-07T13:05:00Z"
+       },
+       {
+        "name": "Browsers",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-07T13:05:00Z",
+        "completed_at": "2026-11-07T13:07:24Z"
+       },
+       {
+        "name": "Playwright (webkit)",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-07T13:07:24Z",
+        "completed_at": "2026-11-07T13:09:48Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-07T13:09:48Z",
+        "completed_at": "2026-11-07T13:12:12Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100091/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000467,
+      "run_id": 9100091,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T21:17:00Z",
+      "started_at": "2026-11-11T21:17:12Z",
+      "completed_at": "2026-11-11T21:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-11T21:17:12Z",
+        "completed_at": "2026-11-11T21:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-11T21:17:18Z",
+        "completed_at": "2026-11-11T21:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-11T21:17:24Z",
+        "completed_at": "2026-11-11T21:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-11T21:17:30Z",
+        "completed_at": "2026-11-11T21:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-11T21:17:36Z",
+        "completed_at": "2026-11-11T21:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100092/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000468,
+      "run_id": 9100092,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T18:17:00Z",
+      "started_at": "2026-11-11T18:17:12Z",
+      "completed_at": "2026-11-11T18:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-11T18:17:12Z",
+        "completed_at": "2026-11-11T18:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-11T18:17:18Z",
+        "completed_at": "2026-11-11T18:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-11T18:17:24Z",
+        "completed_at": "2026-11-11T18:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-11T18:17:30Z",
+        "completed_at": "2026-11-11T18:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-11T18:17:36Z",
+        "completed_at": "2026-11-11T18:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100093/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000469,
+      "run_id": 9100093,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T15:17:00Z",
+      "started_at": "2026-11-11T15:17:12Z",
+      "completed_at": "2026-11-11T15:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-11T15:17:12Z",
+        "completed_at": "2026-11-11T15:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-11T15:17:18Z",
+        "completed_at": "2026-11-11T15:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-11T15:17:24Z",
+        "completed_at": "2026-11-11T15:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-11T15:17:30Z",
+        "completed_at": "2026-11-11T15:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-11T15:17:36Z",
+        "completed_at": "2026-11-11T15:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100094/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000470,
+      "run_id": 9100094,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T12:17:00Z",
+      "started_at": "2026-11-11T12:17:12Z",
+      "completed_at": "2026-11-11T12:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-11T12:17:12Z",
+        "completed_at": "2026-11-11T12:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-11T12:17:18Z",
+        "completed_at": "2026-11-11T12:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-11T12:17:24Z",
+        "completed_at": "2026-11-11T12:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-11T12:17:30Z",
+        "completed_at": "2026-11-11T12:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-11T12:17:36Z",
+        "completed_at": "2026-11-11T12:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100095/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000471,
+      "run_id": 9100095,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T09:17:00Z",
+      "started_at": "2026-11-11T09:17:12Z",
+      "completed_at": "2026-11-11T09:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-11T09:17:12Z",
+        "completed_at": "2026-11-11T09:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-11T09:17:18Z",
+        "completed_at": "2026-11-11T09:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-11T09:17:24Z",
+        "completed_at": "2026-11-11T09:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-11T09:17:30Z",
+        "completed_at": "2026-11-11T09:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-11T09:17:36Z",
+        "completed_at": "2026-11-11T09:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100096/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000472,
+      "run_id": 9100096,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T06:17:00Z",
+      "started_at": "2026-11-11T06:17:12Z",
+      "completed_at": "2026-11-11T06:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-11T06:17:12Z",
+        "completed_at": "2026-11-11T06:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-11T06:17:18Z",
+        "completed_at": "2026-11-11T06:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-11T06:17:24Z",
+        "completed_at": "2026-11-11T06:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-11T06:17:30Z",
+        "completed_at": "2026-11-11T06:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-11T06:17:36Z",
+        "completed_at": "2026-11-11T06:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100097/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000473,
+      "run_id": 9100097,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T03:17:00Z",
+      "started_at": "2026-11-11T03:17:12Z",
+      "completed_at": "2026-11-11T03:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-11T03:17:12Z",
+        "completed_at": "2026-11-11T03:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-11T03:17:18Z",
+        "completed_at": "2026-11-11T03:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-11T03:17:24Z",
+        "completed_at": "2026-11-11T03:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-11T03:17:30Z",
+        "completed_at": "2026-11-11T03:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-11T03:17:36Z",
+        "completed_at": "2026-11-11T03:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100098/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000474,
+      "run_id": 9100098,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-11T00:17:00Z",
+      "started_at": "2026-11-11T00:17:12Z",
+      "completed_at": "2026-11-11T00:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-11T00:17:12Z",
+        "completed_at": "2026-11-11T00:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-11T00:17:18Z",
+        "completed_at": "2026-11-11T00:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-11T00:17:24Z",
+        "completed_at": "2026-11-11T00:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-11T00:17:30Z",
+        "completed_at": "2026-11-11T00:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-11T00:17:36Z",
+        "completed_at": "2026-11-11T00:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100099/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000475,
+      "run_id": 9100099,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-10T21:17:00Z",
+      "started_at": "2026-11-10T21:17:12Z",
+      "completed_at": "2026-11-10T21:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-10T21:17:12Z",
+        "completed_at": "2026-11-10T21:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-10T21:17:18Z",
+        "completed_at": "2026-11-10T21:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-10T21:17:24Z",
+        "completed_at": "2026-11-10T21:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-10T21:17:30Z",
+        "completed_at": "2026-11-10T21:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-10T21:17:36Z",
+        "completed_at": "2026-11-10T21:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100100/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000476,
+      "run_id": 9100100,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-10T18:17:00Z",
+      "started_at": "2026-11-10T18:17:12Z",
+      "completed_at": "2026-11-10T18:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-10T18:17:12Z",
+        "completed_at": "2026-11-10T18:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-10T18:17:18Z",
+        "completed_at": "2026-11-10T18:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-10T18:17:24Z",
+        "completed_at": "2026-11-10T18:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-10T18:17:30Z",
+        "completed_at": "2026-11-10T18:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-10T18:17:36Z",
+        "completed_at": "2026-11-10T18:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100101/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000477,
+      "run_id": 9100101,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-10T15:17:00Z",
+      "started_at": "2026-11-10T15:17:12Z",
+      "completed_at": "2026-11-10T15:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-10T15:17:12Z",
+        "completed_at": "2026-11-10T15:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-10T15:17:18Z",
+        "completed_at": "2026-11-10T15:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-10T15:17:24Z",
+        "completed_at": "2026-11-10T15:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-10T15:17:30Z",
+        "completed_at": "2026-11-10T15:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-10T15:17:36Z",
+        "completed_at": "2026-11-10T15:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100102/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000478,
+      "run_id": 9100102,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-10T12:17:00Z",
+      "started_at": "2026-11-10T12:17:12Z",
+      "completed_at": "2026-11-10T12:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-10T12:17:12Z",
+        "completed_at": "2026-11-10T12:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-10T12:17:18Z",
+        "completed_at": "2026-11-10T12:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-10T12:17:24Z",
+        "completed_at": "2026-11-10T12:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-10T12:17:30Z",
+        "completed_at": "2026-11-10T12:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-10T12:17:36Z",
+        "completed_at": "2026-11-10T12:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100103/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000479,
+      "run_id": 9100103,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-10T09:17:00Z",
+      "started_at": "2026-11-10T09:17:12Z",
+      "completed_at": "2026-11-10T09:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-10T09:17:12Z",
+        "completed_at": "2026-11-10T09:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-10T09:17:18Z",
+        "completed_at": "2026-11-10T09:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-10T09:17:24Z",
+        "completed_at": "2026-11-10T09:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-10T09:17:30Z",
+        "completed_at": "2026-11-10T09:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-10T09:17:36Z",
+        "completed_at": "2026-11-10T09:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100104/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000480,
+      "run_id": 9100104,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-10T06:17:00Z",
+      "started_at": "2026-11-10T06:17:12Z",
+      "completed_at": "2026-11-10T06:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-10T06:17:12Z",
+        "completed_at": "2026-11-10T06:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-10T06:17:18Z",
+        "completed_at": "2026-11-10T06:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-10T06:17:24Z",
+        "completed_at": "2026-11-10T06:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-10T06:17:30Z",
+        "completed_at": "2026-11-10T06:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-10T06:17:36Z",
+        "completed_at": "2026-11-10T06:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100105/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000481,
+      "run_id": 9100105,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-10T03:17:00Z",
+      "started_at": "2026-11-10T03:17:12Z",
+      "completed_at": "2026-11-10T03:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-10T03:17:12Z",
+        "completed_at": "2026-11-10T03:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-10T03:17:18Z",
+        "completed_at": "2026-11-10T03:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-10T03:17:24Z",
+        "completed_at": "2026-11-10T03:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-10T03:17:30Z",
+        "completed_at": "2026-11-10T03:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-10T03:17:36Z",
+        "completed_at": "2026-11-10T03:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100106/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000482,
+      "run_id": 9100106,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-10T00:17:00Z",
+      "started_at": "2026-11-10T00:17:12Z",
+      "completed_at": "2026-11-10T00:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-10T00:17:12Z",
+        "completed_at": "2026-11-10T00:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-10T00:17:18Z",
+        "completed_at": "2026-11-10T00:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-10T00:17:24Z",
+        "completed_at": "2026-11-10T00:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-10T00:17:30Z",
+        "completed_at": "2026-11-10T00:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-10T00:17:36Z",
+        "completed_at": "2026-11-10T00:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100107/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000483,
+      "run_id": 9100107,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T21:17:00Z",
+      "started_at": "2026-11-09T21:17:12Z",
+      "completed_at": "2026-11-09T21:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-09T21:17:12Z",
+        "completed_at": "2026-11-09T21:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-09T21:17:18Z",
+        "completed_at": "2026-11-09T21:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-09T21:17:24Z",
+        "completed_at": "2026-11-09T21:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-09T21:17:30Z",
+        "completed_at": "2026-11-09T21:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-09T21:17:36Z",
+        "completed_at": "2026-11-09T21:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100108/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000484,
+      "run_id": 9100108,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T18:17:00Z",
+      "started_at": "2026-11-09T18:17:12Z",
+      "completed_at": "2026-11-09T18:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-09T18:17:12Z",
+        "completed_at": "2026-11-09T18:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-09T18:17:18Z",
+        "completed_at": "2026-11-09T18:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-09T18:17:24Z",
+        "completed_at": "2026-11-09T18:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-09T18:17:30Z",
+        "completed_at": "2026-11-09T18:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-09T18:17:36Z",
+        "completed_at": "2026-11-09T18:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100109/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000485,
+      "run_id": 9100109,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T15:17:00Z",
+      "started_at": "2026-11-09T15:17:12Z",
+      "completed_at": "2026-11-09T15:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-09T15:17:12Z",
+        "completed_at": "2026-11-09T15:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-09T15:17:18Z",
+        "completed_at": "2026-11-09T15:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-09T15:17:24Z",
+        "completed_at": "2026-11-09T15:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-09T15:17:30Z",
+        "completed_at": "2026-11-09T15:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-09T15:17:36Z",
+        "completed_at": "2026-11-09T15:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100110/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000486,
+      "run_id": 9100110,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T12:17:00Z",
+      "started_at": "2026-11-09T12:17:12Z",
+      "completed_at": "2026-11-09T12:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-09T12:17:12Z",
+        "completed_at": "2026-11-09T12:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-09T12:17:18Z",
+        "completed_at": "2026-11-09T12:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-09T12:17:24Z",
+        "completed_at": "2026-11-09T12:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-09T12:17:30Z",
+        "completed_at": "2026-11-09T12:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-09T12:17:36Z",
+        "completed_at": "2026-11-09T12:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100111/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000487,
+      "run_id": 9100111,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T09:17:00Z",
+      "started_at": "2026-11-09T09:17:12Z",
+      "completed_at": "2026-11-09T09:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-09T09:17:12Z",
+        "completed_at": "2026-11-09T09:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-09T09:17:18Z",
+        "completed_at": "2026-11-09T09:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-09T09:17:24Z",
+        "completed_at": "2026-11-09T09:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-09T09:17:30Z",
+        "completed_at": "2026-11-09T09:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-09T09:17:36Z",
+        "completed_at": "2026-11-09T09:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100112/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000488,
+      "run_id": 9100112,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T06:17:00Z",
+      "started_at": "2026-11-09T06:17:12Z",
+      "completed_at": "2026-11-09T06:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-09T06:17:12Z",
+        "completed_at": "2026-11-09T06:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-09T06:17:18Z",
+        "completed_at": "2026-11-09T06:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-09T06:17:24Z",
+        "completed_at": "2026-11-09T06:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-09T06:17:30Z",
+        "completed_at": "2026-11-09T06:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-09T06:17:36Z",
+        "completed_at": "2026-11-09T06:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100113/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000489,
+      "run_id": 9100113,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T03:17:00Z",
+      "started_at": "2026-11-09T03:17:12Z",
+      "completed_at": "2026-11-09T03:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-09T03:17:12Z",
+        "completed_at": "2026-11-09T03:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-09T03:17:18Z",
+        "completed_at": "2026-11-09T03:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-09T03:17:24Z",
+        "completed_at": "2026-11-09T03:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-09T03:17:30Z",
+        "completed_at": "2026-11-09T03:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-09T03:17:36Z",
+        "completed_at": "2026-11-09T03:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "/repos/example-org/fleet-apps/actions/runs/9100114/jobs": {
+   "status": 200,
+   "body": {
+    "total_count": 1,
+    "jobs": [
+     {
+      "id": 51000490,
+      "run_id": 9100114,
+      "run_attempt": 1,
+      "name": "watchdog",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T00:17:00Z",
+      "started_at": "2026-11-09T00:17:12Z",
+      "completed_at": "2026-11-09T00:17:42Z",
+      "labels": [
+       "ubuntu-latest"
+      ],
+      "runner_name": "GitHub Actions 7",
+      "steps": [
+       {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1,
+        "started_at": "2026-11-09T00:17:12Z",
+        "completed_at": "2026-11-09T00:17:18Z"
+       },
+       {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2,
+        "started_at": "2026-11-09T00:17:18Z",
+        "completed_at": "2026-11-09T00:17:24Z"
+       },
+       {
+        "name": "Install",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3,
+        "started_at": "2026-11-09T00:17:24Z",
+        "completed_at": "2026-11-09T00:17:30Z"
+       },
+       {
+        "name": "Run",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4,
+        "started_at": "2026-11-09T00:17:30Z",
+        "completed_at": "2026-11-09T00:17:36Z"
+       },
+       {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5,
+        "started_at": "2026-11-09T00:17:36Z",
+        "completed_at": "2026-11-09T00:17:42Z"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

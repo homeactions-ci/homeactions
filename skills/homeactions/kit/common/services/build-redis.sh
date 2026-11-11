@@ -38,7 +38,9 @@ fi
 
 # the co-tenant comes first: wait read-only while it is busy (bounded, then proceed)
 HERE="$(cd "$(dirname "$0")" && pwd -P)"
+# shellcheck source=/dev/null  # the tenant conf / hooks lib, located at run time
 for f in "$HERE/../conf/tenant.conf" "{{derived.confFile}}"; do if [ -r "$f" ]; then . "$f"; break; fi; done
+# shellcheck source=/dev/null  # the tenant conf / hooks lib, located at run time
 for f in "$HERE/../hooks/lib.sh" "{{derived.hooksDir}}/lib.sh"; do if [ -r "$f" ]; then . "$f"; break; fi; done
 if command -v cotenant_hold >/dev/null 2>&1; then
   waited=0

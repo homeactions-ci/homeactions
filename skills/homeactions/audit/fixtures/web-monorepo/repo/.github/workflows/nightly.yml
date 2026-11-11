@@ -1,0 +1,19 @@
+# Fictional fixture: a "nightly" that actually fires every hour.
+name: Nightly
+on:
+  schedule:
+    - cron: "0 * * * *"   # every hour
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install
+        run: npm i -g pnpm && pnpm install --frozen-lockfile
+      - name: Smoke
+        run: pnpm test:smoke

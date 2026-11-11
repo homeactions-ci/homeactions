@@ -1,0 +1,31 @@
+# Fictional fixture: Python/pytest. Full version matrix only off PRs, pip cache, docs ignored.
+name: tests
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["docs/**", "**.md"]
+  pull_request:
+    paths-ignore: ["docs/**", "**.md"]
+  schedule:
+    - cron: "30 4 * * 1"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python: ${{ fromJSON(github.event_name == 'pull_request' && '["3.12"]' || '["3.10", "3.11", "3.12", "3.13"]') }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - name: Install
+        run: pip install -e '.[test]'
+      - name: Lint and test
+        run: |
+          ruff check .
+          pytest -q --cov=pyfmt

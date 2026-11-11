@@ -1,0 +1,25 @@
+# Fictional fixture: a hosted watchdog every 3 hours, gated on the runner variable.
+name: runner watchdog
+on:
+  schedule:
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  issues: write
+
+jobs:
+  watchdog:
+    if: vars.FLEET_RUNNER == 'self' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .homeactions
+      - name: Watchdog
+        run: node .homeactions/watchdog.mjs --apply
+        env:
+          GH_TOKEN: ${{ github.token }}

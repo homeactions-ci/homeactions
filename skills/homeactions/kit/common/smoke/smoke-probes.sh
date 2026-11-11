@@ -3,7 +3,9 @@
 # per check, "PASS|FAIL|INFO <check>: <detail>", and exits 1 if any check failed. Read-only. Bash 3.2.
 set -u -o pipefail
 HERE="$(cd "$(dirname "$0")" && pwd -P)"
+# shellcheck source=/dev/null  # the tenant conf / hooks lib, located at run time
 for f in "$HERE/../conf/tenant.conf" "{{derived.confFile}}"; do if [ -r "$f" ]; then . "$f"; break; fi; done
+# shellcheck source=/dev/null  # the tenant conf / hooks lib, located at run time
 for f in "$HERE/../hooks/lib.sh" "{{derived.hooksDir}}/lib.sh"; do if [ -r "$f" ]; then . "$f"; break; fi; done
 command -v hook_log >/dev/null 2>&1 || { echo "FAIL setup: cannot find tenant.conf and hooks/lib.sh"; exit 1; }
 FAILS=0
@@ -92,6 +94,26 @@ if [ -n "$HA_REDIS_BIN" ]; then
   rv="$("${HOMEACTIONS_REDIS_BIN:-$HA_REDIS_BIN}/redis-server" --version 2>/dev/null)"
   case "$rv" in *"v=${HA_REDIS_VERSION%%.*}."*) pass redis "$rv" ;; *) fail redis "${rv:-no redis-server in ${HOMEACTIONS_REDIS_BIN:-$HA_REDIS_BIN}}" ;; esac
   svc_loopback redis "$HA_REDIS_PORT"
+fi
+
+# Inbound probe (dispatch input inbound_probe_seconds): for N seconds listen on the first tenant port on
+# ALL interfaces, so the owner can prove from ANOTHER machine that nothing off-box can connect
+# (`nc -z -w 3 <this-host> <port>` must fail while the window is open). The listener is gone before the
+# job ends, so the job-completed exposure check stays green. Skipped when 0/unset or the port is busy.
+probe_secs="${INBOUND_PROBE_SECONDS:-0}"
+case "$probe_secs" in ''|*[!0-9]*) probe_secs=0 ;; esac
+if [ "$probe_secs" -gt 0 ]; then
+  probe_port="${HA_PORTS%% *}"
+  if [ -n "$(tcp_listen_table | listeners_on_ports "$probe_port")" ]; then
+    info inbound-probe "port $probe_port is busy; skipped"
+  else
+    hook_log "inbound probe: listening on *:$probe_port for ${probe_secs}s. From another machine run: nc -z -w 3 <this-host> $probe_port   (must FAIL)"
+    nc -l "$probe_port" >/dev/null 2>&1 &
+    probe_pid=$!
+    sleep "$probe_secs"
+    kill "$probe_pid" 2>/dev/null; wait "$probe_pid" 2>/dev/null
+    pass inbound-probe "window of ${probe_secs}s on port $probe_port closed (the off-box result is recorded by the owner)"
+  fi
 fi
 
 if [ "$FAILS" -gt 0 ]; then printf '::error::%s smoke: %s check(s) failed\n' "$HA_BANNER" "$FAILS"; exit 1; fi

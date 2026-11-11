@@ -1,0 +1,37 @@
+# Fictional fixture: the expensive WebKit suite stays hosted and is label-gated on PRs.
+name: Pre-deploy e2e
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["**.md", "docs/**"]
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+    paths-ignore: ["**.md", "docs/**"]
+  workflow_dispatch:
+
+concurrency:
+  group: pre-deploy-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  webkit:
+    if: github.event_name != 'pull_request' || contains(github.event.pull_request.labels.*.name, 'e2e:webkit')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.10.0
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Browsers
+        run: pnpm exec playwright install --with-deps webkit
+      - name: Playwright (webkit)
+        run: pnpm exec playwright test --project=webkit

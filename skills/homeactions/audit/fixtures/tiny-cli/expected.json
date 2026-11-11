@@ -1,0 +1,26 @@
+{
+  "repo": "example-org/tiny-cli",
+  "note": "Public repo whose only workflow calls a reusable workflow elsewhere: nothing applies (not found).",
+  "dataSource": "jobs",
+  "outcomes": {
+    "C1": "not-found",
+    "C2": "not-found",
+    "C3": "not-found",
+    "C4": "not-found",
+    "C5": "not-found",
+    "C6": "not-found",
+    "C7": "not-found",
+    "C8": "not-found",
+    "C9": "not-found",
+    "C10": "not-found",
+    "B1": "not-found",
+    "B2": "not-found",
+    "B3": "not-found",
+    "B4": "not-found",
+    "B5": "not-found",
+    "B6": "not-found",
+    "I1": "not-found",
+    "I2": "not-found",
+    "I3": "not-found"
+  }
+}

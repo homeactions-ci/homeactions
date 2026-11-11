@@ -1,0 +1,12 @@
+[
+  { "template": "repo/workflows/runner-smoke.yml.tmpl", "output": "repo/.github/workflows/homeactions-runner-smoke.yml" },
+  { "template": "repo/workflows/runner-maintenance.yml.tmpl", "output": "repo/.github/workflows/homeactions-runner-maintenance.yml" },
+  { "template": "repo/tests/placement.test.mjs.tmpl", "output": "repo/.homeactions/tests/placement.test.mjs" },
+  { "template": "repo/docs/RUNBOOK.md.tmpl", "output": "repo/.homeactions/RUNBOOK.md" },
+  { "template": "common/watchdog/watchdog.mjs", "output": "repo/.homeactions/watchdog.mjs", "mode": "0755", "when": "!watchdog.placement=none" },
+  { "template": "common/watchdog/placements/cloud-routine.md", "output": "repo/.homeactions/WATCHDOG.md", "when": "watchdog.placement=cloud-routine" },
+  { "template": "common/watchdog/placements/hosted-cron.md", "output": "repo/.homeactions/WATCHDOG.md", "when": "watchdog.placement=hosted-cron" },
+  { "template": "common/watchdog/placements/laptop-task.md", "output": "repo/.homeactions/WATCHDOG.md", "when": "watchdog.placement=laptop-task" },
+  { "template": "common/watchdog/placements/watcher-user.md", "output": "repo/.homeactions/WATCHDOG.md", "when": "watchdog.placement=watcher-user" },
+  { "template": "common/watchdog/placements/hosted-cron.yml.tmpl", "output": "repo/.github/workflows/homeactions-watchdog.yml", "when": "watchdog.placement=hosted-cron" }
+]

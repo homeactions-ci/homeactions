@@ -8,7 +8,9 @@
 set -u -o pipefail
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 HERE="$(cd "$(dirname "$0")" && pwd -P)"
+# shellcheck source=/dev/null  # the tenant conf / hooks lib, located at run time
 for f in "$HERE/conf/tenant.conf" "{{derived.confFile}}"; do if [ -r "$f" ]; then . "$f"; break; fi; done
+# shellcheck source=/dev/null  # the tenant conf / hooks lib, located at run time
 for f in "$HERE/hooks/lib.sh" "{{derived.hooksDir}}/lib.sh"; do if [ -r "$f" ]; then . "$f"; break; fi; done
 command -v hook_log >/dev/null 2>&1 || { printf '::error::%s maintenance: cannot find tenant.conf and hooks/lib.sh\n' "{{derived.banner}}"; exit 2; }
 [ "$(id -un)" = "$HA_USER" ] || { printf '::error::%s maintenance: run as %s (running as %s)\n' "$HA_BANNER" "$HA_USER" "$(id -un)"; exit 2; }

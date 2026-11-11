@@ -1,0 +1,26 @@
+{
+  "repo": "example-org/pyfmt-lib",
+  "note": "Python/pytest library: mixed outcomes; budgets unreadable (403) so B5 is unknown.",
+  "dataSource": "jobs",
+  "outcomes": {
+    "C1": "found",
+    "C2": "already-done",
+    "C3": "already-done",
+    "C4": "already-done",
+    "C5": "already-done",
+    "C6": "not-found",
+    "C7": "not-found",
+    "C8": "already-done",
+    "C9": "not-found",
+    "C10": "not-found",
+    "B1": "found",
+    "B2": "not-found",
+    "B3": "found",
+    "B4": "already-done",
+    "B5": "unknown",
+    "B6": "found",
+    "I1": "not-found",
+    "I2": "found",
+    "I3": "already-done"
+  }
+}
