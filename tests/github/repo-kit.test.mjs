@@ -170,7 +170,7 @@ ${timeout ? "    timeout-minutes: 20\n" : ""}    steps:
       - uses: actions/setup-node@v4
 ${cache === "gated" ? "        if: runner.environment == 'github-hosted'\n" : ""}        with:
           node-version: 24.10.0
-          cache: pnpm
+          cache: ${cache === "expr" ? "${{ runner.environment == 'github-hosted' && 'pnpm' || '' }}" : "pnpm"}
       - run: pnpm install --frozen-lockfile && pnpm test
 ${secret ? "        env:\n          API_KEY: ${{ secrets.API_KEY }}\n" : ""}${extraJob}`;
 
@@ -186,6 +186,18 @@ test("rendered placement test: green on a compliant repo (plus a hosted-only job
     assert.equal(r.status, 0, r.out);
     assert.match(r.out, /ci\.yml\\?#test: safe to run self-hosted/);
     assert.match(r.out, /homeactions-runner-smoke\.yml\\?#smoke: runs-on/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+// Regression (first real tenant, 2026-11-12): a cache gated inside its own `cache:` expression is hosted-only too.
+test("rendered placement test: green when the cache is gated in the `cache:` expression itself", () => {
+  const { dir, repo, d } = makeRepo("two-tenant-mac", { "ci.yml": ciYaml(derive(loadProfile("two-tenant-mac")), { cache: "expr" }) });
+  try {
+    const r = runPlacement(repo);
+    assert.equal(r.status, 0, r.out);
+    assert.match(r.out, /ci\.yml\\?#test: safe to run self-hosted/);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

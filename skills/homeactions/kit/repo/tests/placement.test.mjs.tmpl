@@ -4,7 +4,7 @@
 //   - runs-on is the homeactions switch expression, or the job is listed in workflows.hostedOnlyJobs of
 //     .homeactions/profile.json, or it is one of the kit's own workflows with its fixed runs-on;
 //   - jobs able to run self-hosted: no `secrets.` (secretsPolicy "none"), no `services:` / `container:`,
-//     no `sudo `, no actions/cache or setup-* `cache:` unless gated by runner.environment == 'github-hosted';
+//     no `sudo `, no actions/cache or setup-* `cache:` unless gated by runner.environment == 'github-hosted' (in `if:` or in the `cache:` expression);
 //   - every job has timeout-minutes (reusable-workflow callers cannot, and are skipped).
 // Change the profile and re-render instead of editing this file. HOMEACTIONS_REPO_ROOT overrides the repo root.
 import { test } from "node:test";
@@ -516,7 +516,10 @@ function selfHostedProblems(job, text, wfDoc) {
     if (!s || typeof s !== "object") return;
     if (typeof s.run === "string" && /(^|[\s;&|(`])sudo\s/m.test(s.run)) out.push(`step ${i + 1} runs sudo`);
     const usesCache = typeof s.uses === "string" && (/^actions\/cache(\/|@)/.test(s.uses) || (/setup-[a-z]+|pnpm\/action-setup/.test(s.uses) && s.with && s.with.cache != null && s.with.cache !== false && s.with.cache !== ""));
-    if (usesCache && !HOSTED_GATE.test(String(s.if ?? "")) && !HOSTED_GATE.test(String(job.if ?? ""))) out.push(`step ${i + 1} (${s.uses}) caches without \`if: runner.environment == 'github-hosted'\` (saves race on a persistent runner)`);
+    // Gated by the step's `if:`, the job's `if:`, or an expression in `with.cache` itself
+    // (e.g. `cache: ${{ runner.environment == 'github-hosted' && 'pnpm' || '' }}`).
+    const gated = HOSTED_GATE.test(String(s.if ?? "")) || HOSTED_GATE.test(String(job.if ?? "")) || HOSTED_GATE.test(String(s.with?.cache ?? ""));
+    if (usesCache && !gated) out.push(`step ${i + 1} (${s.uses}) caches without \`if: runner.environment == 'github-hosted'\` (saves race on a persistent runner)`);
   });
   return out;
 }
