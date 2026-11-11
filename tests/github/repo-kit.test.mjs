@@ -258,3 +258,22 @@ test("the rendered placement test needs no dependencies (only node: imports)", (
   assert.ok(imports.length >= 4);
   for (const i of imports) assert.match(i, /^node:/);
 });
+
+// Regression (first real tenant, 2026-11-12): the smoke workflow picks its runtimes at render time. A runtime
+// `fromJSON('{"node":…}').python` lookup is a type error to actionlint (the literal has no such key).
+test("smoke workflow: runtime setup steps are chosen at render time, one per runtime in the profile", () => {
+  for (const [name, has, hasNot] of [["two-tenant-mac", "node-version: \"24.10.0\"", "setup-python"], ["linux-beta", "python-version: \"3.12\"", "setup-node"]]) {
+    const dir = mkdtempSync(path.join(tmpdir(), "ha-smoke-"));
+    try {
+      const out = renderRepo(loadProfile(name), dir);
+      const smoke = out["repo/.github/workflows/homeactions-runner-smoke.yml"];
+      assert.ok(smoke, `${name}: smoke rendered`);
+      assert.ok(!/fromJSON\('\{/.test(smoke), `${name}: no runtime fromJSON of a literal object`);
+      assert.ok(smoke.includes(has), `${name}: ${has}`);
+      assert.ok(!smoke.includes(hasNot), `${name}: no ${hasNot}`);
+      parse(smoke);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  }
+});

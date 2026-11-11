@@ -41,19 +41,17 @@ jobs:
           INBOUND_PROBE_SECONDS: ${{ inputs.inbound_probe_seconds }}
         run: bash "{{tenant.rootDir}}/smoke/smoke-probes.sh"
 
-      - name: Set up Node
-        if: ${{ fromJSON('{{json stack.runtimes}}').node != null }}
+{{#if derived.nodeVersion}}      - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ fromJSON('{{json stack.runtimes}}').node }}
+          node-version: "{{derived.nodeVersion}}"
 
-      - name: Set up Python
-        if: ${{ fromJSON('{{json stack.runtimes}}').python != null }}
+{{/if}}{{#if derived.pythonVersion}}      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ fromJSON('{{json stack.runtimes}}').python }}
+          python-version: "{{derived.pythonVersion}}"
 
-      - name: Install (mirrors CI)
+{{/if}}      - name: Install (mirrors CI)
         id: install
         run: |
           set -eu

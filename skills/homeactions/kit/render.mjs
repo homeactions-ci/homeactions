@@ -83,6 +83,8 @@ export function derive(profile) {
     probesSpace: profile.isolation.probeTargets.join(" "),
     forbiddenReadSpace: profile.isolation.forbiddenReadPaths.join(" "),
     otherAdmins: profile.host.otherAdmins ?? [],
+    nodeVersion: profile.stack.runtimes?.node ?? "",
+    pythonVersion: profile.stack.runtimes?.python ?? "",
     hasPostgres: Boolean(pg),
     hasRedis: Boolean(redis),
     postgres: pg ? { sourceSha256: "", ...pg, major: pg.version.split(".")[0], prefix: `${optDir}/postgresql-${pg.version.split(".")[0]}`, bin: `${optDir}/postgresql-${pg.version.split(".")[0]}/bin` } : null,
