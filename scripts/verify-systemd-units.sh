@@ -21,7 +21,10 @@ names="$(HA_RENDER="$here/../skills/homeactions/kit/render.mjs" HA_PROFILE="$pro
   console.log(`firewall.service=${d.firewallLabel}.service`);
 ')"
 
-mkdir -p "$root/etc/systemd/system"
+mkdir -p "$root/etc/systemd/system" "$root/usr/lib/systemd"
+# Default dependencies (sysinit.target, basic.target, network-online.target …) are resolved inside --root
+# too, so the root carries a copy of this machine's stock unit library.
+if [ -d /usr/lib/systemd/system ]; then cp -a /usr/lib/systemd/system "$root/usr/lib/systemd/"; fi
 units=()
 for src in "$out"/host/systemd/*.service; do
   base="$(basename "$src")"
