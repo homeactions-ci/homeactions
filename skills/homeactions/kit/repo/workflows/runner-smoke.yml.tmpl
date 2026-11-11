@@ -26,6 +26,8 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false # never leave the job token in .git/config on a self-hosted box
 
       - name: Host facts
         run: |

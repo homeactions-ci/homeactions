@@ -277,3 +277,24 @@ test("smoke workflow: runtime setup steps are chosen at render time, one per run
     }
   }
 });
+
+// Regression (first real tenant, 2026-11-12): kit workflows run on the user's machine, so a checkout must not
+// leave the job's token in the workspace's .git/config.
+test("every rendered workflow's checkout sets persist-credentials: false", () => {
+  for (const name of ["two-tenant-mac", "dedicated-mac", "linux-beta"]) {
+    const dir = mkdtempSync(path.join(tmpdir(), "ha-checkout-"));
+    try {
+      const out = renderRepo(loadProfile(name), dir);
+      for (const [file, text] of Object.entries(out).filter(([f]) => f.endsWith(".yml"))) {
+        const doc = parse(text);
+        for (const [job, j] of Object.entries(doc.jobs ?? {})) {
+          for (const s of j.steps ?? []) {
+            if (typeof s.uses === "string" && s.uses.startsWith("actions/checkout")) assert.equal(s.with?.["persist-credentials"], false, `${name} ${file}#${job}`);
+          }
+        }
+      }
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  }
+});
