@@ -4,6 +4,8 @@ All notable changes to homeactions are recorded here. The format follows [Keep a
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-11-12
+
 ### Fixed
 - Kit workflows (smoke, hosted-cron watchdog) check out with `persist-credentials: false`, so the job token never stays in the workspace's `.git/config` on the user's machine.
 - The smoke workflow chooses its Node/Python setup steps at render time instead of a runtime `fromJSON(...)` lookup that actionlint reports as a type error. Found on the first real tenant.
