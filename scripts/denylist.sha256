@@ -1,0 +1,13 @@
+# SHA-256 of lowercase tokens that must never appear in this public repo (names of the private projects
+# homeactions was built for, their hosts, accounts and people). Stored as hashes so the list itself discloses
+# nothing. scripts/scan-specifics.mjs splits every line into [a-z0-9]+ tokens and checks each one.
+# Add more locally, in plain text, to .denylist.local (gitignored).
+aa0e64ccccb58e2199943f81c8039b5d0a7e1984987e349d376d76b708bace9e
+eed980d067a514295d61cc5252a41e4b7d1c40e2297bd7f43338e502b1f995d9
+570de23ef789c88a5a9f0de99670faffe71475400c816d969ed96992027329dc
+6f6842dd66a15c1cc82c3b33258dd5482804e8ce8b8d49e356f78d57ef985118
+2bd2d3a31934d76198acc030caca4c31965474fe5fa48f35fef79d0fd74ee1b2
+a6d7addf54a5d27e0c7756454405139a228c2026bd0e9fc518a0253d90b3744e
+65fa568dbbc05b134708062f004c3141bd93bc79f847a490386a56d99ae6f1ab
+9196c6e5eab1895fa8e9d14874097e919185afa9296520010181ff4fc42bce66
+a8dc28567048c5257eb4031afa5db4ccff15011bd9589cc1ae4d5abf6d52e86d

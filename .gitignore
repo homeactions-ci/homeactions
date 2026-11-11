@@ -1,0 +1,6 @@
+node_modules/
+out/
+.render-tmp/
+evals/results/
+.denylist.local
+.DS_Store

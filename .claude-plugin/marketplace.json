@@ -1,0 +1,11 @@
+{
+  "name": "homeactions",
+  "owner": { "name": "homeactions-ci", "url": "https://github.com/homeactions-ci" },
+  "plugins": [
+    {
+      "name": "homeactions",
+      "source": "./",
+      "description": "Audit your CI for savings and run it on your own machine: an interview-first, sudo-free self-hosted runner setup for GitHub Actions."
+    }
+  ]
+}

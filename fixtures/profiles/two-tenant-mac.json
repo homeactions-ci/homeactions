@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "runner": {
+    "version": "2.338.2",
+    "sha256": {
+      "osx-arm64": "25a065af409ffa317ab4d5a3b614dd15fc9c40f2172bc1b35a1b1258e919a388",
+      "osx-x64": "109fff505a34014a7e8d1acb850c33d404811102f572b8fb9788e2fff013cc49",
+      "linux-arm64": "670adb2f268fe21dcbb58b3db0e0aa9d5b3bddfe2c651481336e561ff86de945",
+      "linux-x64": "baebf204307bac6193480852732f0aba2ae97b6c5597c244f4d5558390147c40"
+    }
+  },
+  "maintenance": {
+    "cron": "23 18 * * 6",
+    "homeMaxGb": 30,
+    "diagRetentionDays": 14
+  },
+  "secretsPolicy": "none",
+  "roles": {
+    "machineAdmin": "you",
+    "repoAdmin": "you"
+  },
+  "tenant": {
+    "name": "acme-ci",
+    "user": "acme-ci",
+    "group": "acme-ci",
+    "uid": 510,
+    "gid": 510,
+    "home": "/Users/acme-ci",
+    "labelPrefix": "com.example.acme-ci",
+    "rootDir": "/Library/AcmeCI",
+    "runnerName": "box-acme-1",
+    "runnerLabels": [
+      "acme-ci"
+    ]
+  },
+  "host": {
+    "os": "macos",
+    "arch": "arm64",
+    "access": "ssh",
+    "sshAlias": "buildbox",
+    "cores": 10,
+    "memoryGb": 16,
+    "diskEncryption": "filevault",
+    "autoRestart": false,
+    "otherAdmins": [
+      "admin",
+      "builder"
+    ]
+  },
+  "repo": {
+    "slug": "example-org/acme-app",
+    "visibility": "private",
+    "forkPrs": false
+  },
+  "workflows": {
+    "fallbackVariable": "ACME_CI_RUNNER",
+    "selfValue": "self",
+    "selfLabel": "ci:self",
+    "hostedLabel": "ci:hosted",
+    "hostedOnlyJobs": [
+      "pre-deploy.yml#webkit"
+    ]
+  },
+  "stack": {
+    "packageManager": "pnpm",
+    "runtimes": {
+      "node": "24.10.0"
+    },
+    "browsers": [
+      "chromium"
+    ],
+    "monorepoTool": "turbo"
+  },
+  "caps": {
+    "nice": 10,
+    "openFiles": 10240,
+    "nextBuildCpus": 2,
+    "turboConcurrency": 2,
+    "jestMaxWorkers": 1,
+    "playwrightWorkers": 1
+  },
+  "services": [
+    {
+      "kind": "postgres",
+      "version": "16.15",
+      "port": 5442,
+      "install": "source",
+      "sourceSha256": "c1575341fa7bd40f5274ea465b34390f4dc64cdd0770af327005caaeb9f6b7ed"
+    }
+  ],
+  "ports": [
+    3100,
+    3101,
+    5442,
+    5443
+  ],
+  "isolation": {
+    "network": true,
+    "privateRanges": [
+      "10.0.0.0/8",
+      "172.16.0.0/12",
+      "192.168.0.0/16",
+      "169.254.0.0/16",
+      "100.64.0.0/10",
+      "fc00::/7",
+      "fe80::/10"
+    ],
+    "probeTargets": [
+      "127.0.0.1:22",
+      "127.0.0.1:5037",
+      "127.0.0.1:3000"
+    ],
+    "forbiddenReadPaths": [
+      "/Users/admin",
+      "/Users/builder"
+    ]
+  },
+  "cotenant": {
+    "mode": "marker-dir",
+    "markerDir": "/Users/Shared/othertenant/busy",
+    "pidGlob": "device.*.busy",
+    "epochFile": "device.want",
+    "epochBoundSeconds": 2400,
+    "yieldBudgetSeconds": 900,
+    "pollSeconds": 15,
+    "swapYieldMb": 1775,
+    "workerProbe": {
+      "user": "builder",
+      "pattern": "Runner.Worker"
+    }
+  },
+  "diskFloorGb": 25,
+  "watchdog": {
+    "placement": "cloud-routine",
+    "thresholdMinutes": 30,
+    "reapClosedPrs": true
+  },
+  "optimizations": [
+    {
+      "id": "B1",
+      "target": "optimise-pr"
+    },
+    {
+      "id": "C7",
+      "target": "optimise-pr"
+    }
+  ]
+}

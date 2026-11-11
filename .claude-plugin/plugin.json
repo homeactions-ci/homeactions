@@ -1,0 +1,11 @@
+{
+  "name": "homeactions",
+  "displayName": "homeactions",
+  "version": "0.1.0",
+  "description": "Out of GitHub Actions minutes? Your coding agent audits your CI for savings, then sets up a safe, isolated self-hosted runner on your own Mac or Linux box, and keeps it healthy. The agent never runs sudo.",
+  "author": { "name": "homeactions-ci", "url": "https://github.com/homeactions-ci" },
+  "homepage": "https://github.com/homeactions-ci/homeactions",
+  "repository": "https://github.com/homeactions-ci/homeactions",
+  "license": "MIT",
+  "keywords": ["ci", "github-actions", "self-hosted-runner", "actions-minutes", "launchd", "systemd", "devops", "cost"]
+}

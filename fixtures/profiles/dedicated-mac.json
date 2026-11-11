@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "runner": {
+    "version": "2.338.2",
+    "sha256": {
+      "osx-arm64": "25a065af409ffa317ab4d5a3b614dd15fc9c40f2172bc1b35a1b1258e919a388",
+      "osx-x64": "109fff505a34014a7e8d1acb850c33d404811102f572b8fb9788e2fff013cc49",
+      "linux-arm64": "670adb2f268fe21dcbb58b3db0e0aa9d5b3bddfe2c651481336e561ff86de945",
+      "linux-x64": "baebf204307bac6193480852732f0aba2ae97b6c5597c244f4d5558390147c40"
+    }
+  },
+  "maintenance": {
+    "cron": "23 18 * * 6",
+    "homeMaxGb": 30,
+    "diagRetentionDays": 14
+  },
+  "secretsPolicy": "none",
+  "roles": {
+    "machineAdmin": "you",
+    "repoAdmin": "you"
+  },
+  "tenant": {
+    "name": "solo-ci",
+    "user": "solo-ci",
+    "group": "solo-ci",
+    "uid": 520,
+    "gid": 520,
+    "home": "/Users/solo-ci",
+    "labelPrefix": "dev.example.solo",
+    "rootDir": "/Library/SoloCI",
+    "runnerName": "solo-mac-1",
+    "runnerLabels": [
+      "solo-ci"
+    ]
+  },
+  "host": {
+    "os": "macos",
+    "arch": "arm64",
+    "access": "local",
+    "cores": 8,
+    "memoryGb": 24,
+    "diskEncryption": "filevault",
+    "autoRestart": true
+  },
+  "repo": {
+    "slug": "example-solo/side-project",
+    "visibility": "private",
+    "forkPrs": false
+  },
+  "workflows": {
+    "fallbackVariable": "SOLO_RUNNER",
+    "selfValue": "home",
+    "selfLabel": "ci:home",
+    "hostedLabel": "ci:hosted",
+    "hostedOnlyJobs": []
+  },
+  "stack": {
+    "packageManager": "npm",
+    "runtimes": {
+      "node": "22.11.0"
+    },
+    "browsers": [],
+    "monorepoTool": "none"
+  },
+  "caps": {
+    "nice": 5,
+    "openFiles": 8192,
+    "jestMaxWorkers": 2
+  },
+  "services": [
+    {
+      "kind": "redis",
+      "version": "7.4.12",
+      "port": 6390,
+      "install": "source",
+      "sourceSha256": "56588ee1648539556f2b6cf4e873e3734afbbe40fa952fec2fcd6b6d7dae2924"
+    }
+  ],
+  "ports": [
+    4000,
+    6390
+  ],
+  "isolation": {
+    "network": false,
+    "privateRanges": [],
+    "probeTargets": [],
+    "forbiddenReadPaths": []
+  },
+  "cotenant": {
+    "mode": "none",
+    "yieldBudgetSeconds": 0,
+    "pollSeconds": 15
+  },
+  "diskFloorGb": 20,
+  "watchdog": {
+    "placement": "hosted-cron",
+    "thresholdMinutes": 30,
+    "reapClosedPrs": true
+  }
+}

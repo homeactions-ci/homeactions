@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "runner": {
+    "version": "2.338.2",
+    "sha256": {
+      "osx-arm64": "25a065af409ffa317ab4d5a3b614dd15fc9c40f2172bc1b35a1b1258e919a388",
+      "osx-x64": "109fff505a34014a7e8d1acb850c33d404811102f572b8fb9788e2fff013cc49",
+      "linux-arm64": "670adb2f268fe21dcbb58b3db0e0aa9d5b3bddfe2c651481336e561ff86de945",
+      "linux-x64": "baebf204307bac6193480852732f0aba2ae97b6c5597c244f4d5558390147c40"
+    }
+  },
+  "maintenance": {
+    "cron": "23 18 * * 6",
+    "homeMaxGb": 30,
+    "diagRetentionDays": 14
+  },
+  "secretsPolicy": "none",
+  "roles": {
+    "machineAdmin": "you",
+    "repoAdmin": "you"
+  },
+  "tenant": {
+    "name": "lab-ci",
+    "user": "lab-ci",
+    "group": "lab-ci",
+    "uid": 1510,
+    "gid": 1510,
+    "home": "/home/lab-ci",
+    "labelPrefix": "dev.example.lab-ci",
+    "rootDir": "/opt/homeactions-lab",
+    "runnerName": "lab-linux-1",
+    "runnerLabels": [
+      "lab-ci"
+    ]
+  },
+  "host": {
+    "os": "linux",
+    "arch": "x64",
+    "access": "ssh",
+    "sshAlias": "labbox",
+    "cores": 16,
+    "memoryGb": 32,
+    "diskEncryption": "luks",
+    "autoRestart": true,
+    "otherAdmins": [
+      "ops"
+    ]
+  },
+  "repo": {
+    "slug": "example-lab/api",
+    "visibility": "private",
+    "forkPrs": false
+  },
+  "workflows": {
+    "fallbackVariable": "LAB_CI_RUNNER",
+    "selfValue": "lab",
+    "selfLabel": "ci:lab",
+    "hostedLabel": "ci:hosted",
+    "hostedOnlyJobs": []
+  },
+  "stack": {
+    "packageManager": "uv",
+    "runtimes": {
+      "python": "3.12"
+    },
+    "browsers": [
+      "chromium",
+      "firefox"
+    ],
+    "monorepoTool": "none"
+  },
+  "caps": {
+    "nice": 10,
+    "openFiles": 65536,
+    "playwrightWorkers": 2
+  },
+  "services": [
+    {
+      "kind": "postgres",
+      "version": "16.6",
+      "port": 5452,
+      "install": "package"
+    },
+    {
+      "kind": "redis",
+      "version": "7.4.12",
+      "port": 6391,
+      "install": "source",
+      "sourceSha256": "56588ee1648539556f2b6cf4e873e3734afbbe40fa952fec2fcd6b6d7dae2924"
+    }
+  ],
+  "ports": [
+    8000,
+    5452,
+    6391
+  ],
+  "isolation": {
+    "network": true,
+    "privateRanges": [
+      "10.0.0.0/8",
+      "172.16.0.0/12",
+      "192.168.0.0/16",
+      "169.254.0.0/16",
+      "100.64.0.0/10",
+      "fc00::/7",
+      "fe80::/10"
+    ],
+    "probeTargets": [
+      "127.0.0.1:22"
+    ],
+    "forbiddenReadPaths": [
+      "/home/ops"
+    ]
+  },
+  "cotenant": {
+    "mode": "command",
+    "command": "/usr/local/bin/lab-busy-check",
+    "yieldBudgetSeconds": 600,
+    "pollSeconds": 20,
+    "swapYieldMb": 0
+  },
+  "diskFloorGb": 40,
+  "watchdog": {
+    "placement": "laptop-task",
+    "thresholdMinutes": 20,
+    "reapClosedPrs": false
+  }
+}
