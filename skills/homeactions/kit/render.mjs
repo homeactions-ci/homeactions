@@ -175,6 +175,7 @@ export function renderKit(profile, outDir) {
     e.code = "PROFILE";
     throw e;
   }
+  mkdirSync(outDir, { recursive: true });
   const ctx = { ...profile, derived: derive(profile) };
   const version = ctx.derived.kitVersion;
   const entries = loadManifest().filter((e) => whenMatches(e, ctx));
