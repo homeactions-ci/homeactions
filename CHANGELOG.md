@@ -4,6 +4,11 @@ All notable changes to homeactions are recorded here. The format follows [Keep a
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-11-12
+
+### Changed
+- Rendered Markdown files (the runbook and the watchdog guide) now carry the "rendered by" header as an HTML comment, so every rendered file whose format allows a comment says where it came from.
+
 ## [0.1.1] - 2026-11-12
 
 ### Fixed

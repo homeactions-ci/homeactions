@@ -21,7 +21,7 @@ The kit is a set of templates rendered from one validated profile (`profile.sche
   - `os` (optional) limits the entry to those host OSes.
   - `when` (optional) is `path` (truthy), `!path`, or `path=value`, with several conditions joined by ` && `.
   - `mode` defaults to `0644`.
-  - `header: false` suppresses the "rendered by" header. Use it for files whose format forbids comments, such as the runner `.env` and `.path`.
+  - `header: false` suppresses the "rendered by" header. Use it for files whose format forbids comments, such as the runner `.env` and `.path`. JSON outputs never carry one; Markdown carries it as an HTML comment.
   - Two entries may not write the same output.
 - **Output layout:**
   - `host/**` is copied to the runner machine. The renderer writes `host/SHA256SUMS`, and the owner verifies it before running anything privileged.

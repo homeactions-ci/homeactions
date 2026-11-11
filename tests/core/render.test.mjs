@@ -68,14 +68,14 @@ for (const f of fixtures) {
     }
   });
 
-  test(`fixture ${f}: every rendered file (except .json/.md and header:false files) carries the "rendered by" header`, () => {
+  test(`fixture ${f}: every rendered file (except .json and header:false files, which cannot hold a comment) carries the "rendered by" header`, () => {
     const out = tmp();
     try {
       const rec = renderKit(load(f), out);
       const manifest = readdirSync(path.join(KIT, "manifest.d")).filter((x) => x.endsWith(".json")).flatMap((x) => JSON.parse(readFileSync(path.join(KIT, "manifest.d", x), "utf8")));
       const noHeader = new Set(manifest.filter((e) => e.header === false).map((e) => e.output));
       for (const { output } of rec.files) {
-        if (noHeader.has(output) || /\.(json|md)$/.test(output)) continue;
+        if (noHeader.has(output) || /\.json$/.test(output)) continue;
         assert.match(readFileSync(path.join(out, output), "utf8").split("\n").slice(0, 3).join("\n"), /rendered by homeactions v\d+\.\d+\.\d+/, output);
       }
     } finally {

@@ -157,9 +157,9 @@ function whenMatches(entry, ctx) {
 function header(output, version) {
   const line = `rendered by homeactions v${version} from .homeactions/profile.json; do not edit, re-render instead`;
   const ext = path.extname(output);
-  if ([".plist", ".xml"].includes(ext)) return { kind: "xml", text: `<!-- ${line} -->` };
+  if ([".plist", ".xml", ".md"].includes(ext)) return { kind: "xml", text: `<!-- ${line} -->` };
   if ([".mjs", ".js", ".ts"].includes(ext)) return { kind: "line", text: `// ${line}` };
-  if (ext === ".json" || ext === ".md") return null;
+  if (ext === ".json") return null;
   return { kind: "line", text: `# ${line}` };
 }
 
