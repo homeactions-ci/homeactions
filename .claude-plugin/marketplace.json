@@ -1,6 +1,12 @@
 {
   "name": "homeactions",
-  "owner": { "name": "homeactions-ci", "url": "https://github.com/homeactions-ci" },
+  "owner": {
+    "name": "homeactions-ci",
+    "url": "https://github.com/homeactions-ci"
+  },
+  "metadata": {
+    "description": "homeactions: audit your GitHub Actions spend, then run CI on your own Mac or Linux box on an isolated self-hosted runner. The agent never runs sudo."
+  },
   "plugins": [
     {
       "name": "homeactions",
