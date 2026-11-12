@@ -254,3 +254,31 @@ test("macOS provisioner and uninstaller: tenant commands start from / (the owner
     for (const [, name, body] of bodies) assert.match(body, /\(cd \/ && "\$\{argv\[@\]\}" "\$@"\)/, `${s}: ${name} runs from /`);
   }
 });
+
+// Regression (first real install, 2026-11-12): under `set -euo pipefail`, an awk that exits early can SIGPIPE the
+// command feeding it (`ps … | awk '… { print; exit }'`), and the command substitution then aborts the script with no
+// message. `verify` stopped silently after "…runner loaded" on a busy machine. No early `exit` downstream of a pipe.
+test("provisioners: no awk downstream of a pipe exits early (SIGPIPE + pipefail aborts the script silently)", () => {
+  for (const f of fixtureNames) {
+    const r = renderedFixture(f);
+    for (const s of existing(r)) {
+      for (const [i, line] of read(s).split("\n").entries()) {
+        if (/^\s*#/.test(line)) continue;
+        assert.ok(!/\|\s*awk\b[^|]*\bexit\b/.test(line), `${s}:${i + 1} pipes into an awk that exits early`);
+      }
+    }
+  }
+});
+
+test("provisioners: the listener lookup prints one line and reads all of its input", () => {
+  for (const f of fixtureNames) {
+    const r = renderedFixture(f);
+    const text = read(path.join(r.host, "provision.sh"));
+    const prog = /awk -v u="\$T_UID" '([^']*Runner\\\.Listener[^']*)'/.exec(text);
+    assert.ok(prog, `${f}: listener awk found`);
+    const input = Array.from({ length: 5000 }, (_, k) => `${k % 2 ? 510 : 501} 10 /x/bin/Runner.Listener run`).join("\n") + "\n";
+    const res = spawnSync("/bin/bash", ["-c", `set -euo pipefail; out="$(cat | awk -v u=510 '${prog[1]}')"; printf '%s\\n' "$out"`], { input, encoding: "utf8" });
+    assert.equal(res.status, 0, res.stderr);
+    assert.equal(res.stdout.trim(), "510 10");
+  }
+});

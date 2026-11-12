@@ -555,7 +555,7 @@ plist_is() { [ "$("$PLISTBUDDY" -c "Print :$2" "$1" 2>/dev/null)" = "$3" ]; }
 listener_ok() {
   local n=0 line
   while [ "$n" -lt 30 ]; do
-    line="$(ps -axo uid=,ni=,command= | awk -v u="$T_UID" '$1 == u && /Runner\.Listener/ { print $1, $2; exit }')"
+    line="$(ps -axo uid=,ni=,command= | awk -v u="$T_UID" '$1 == u && /Runner\.Listener/ && !seen { print $1, $2; seen = 1 }')"
     if [ -n "$line" ]; then
       [ "$line" = "${T_UID} ${NICE}" ] && return 0
       warn "Runner.Listener runs as uid/nice ${line}, expected ${T_UID} ${NICE}"
@@ -737,7 +737,7 @@ cmd_verify() {
   done
   if [ -f "$DAEMON_PLIST" ]; then v_result OK "${DAEMON_PLIST} present"; else v_result FAIL "${DAEMON_PLIST} absent"; fi
   if launchctl print "system/${DAEMON_LABEL}" >/dev/null 2>&1; then v_result OK "${DAEMON_LABEL} loaded"; else v_result FAIL "${DAEMON_LABEL} not loaded (or not readable without sudo)"; fi
-  line="$(ps -axo uid=,ni=,command= | awk -v u="$T_UID" '$1 == u && /Runner\.Listener/ { print $1, $2; exit }')"
+  line="$(ps -axo uid=,ni=,command= | awk -v u="$T_UID" '$1 == u && /Runner\.Listener/ && !seen { print $1, $2; seen = 1 }')"
   if [ -z "$line" ]; then v_result FAIL "no Runner.Listener running as uid ${T_UID}"; elif [ "$line" = "${T_UID} ${NICE}" ]; then v_result OK "Runner.Listener runs as uid ${T_UID} at nice ${NICE}"; else v_result FAIL "Runner.Listener uid/nice is ${line}"; fi
   if [ "$NETWORK" = 1 ]; then
     if [ -f "$FIREWALL_PLIST" ]; then v_result OK "${FIREWALL_PLIST} present"; else v_result FAIL "${FIREWALL_PLIST} absent"; fi

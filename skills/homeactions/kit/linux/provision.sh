@@ -509,7 +509,7 @@ firewall_active() {
 listener_ok() {
   local n=0 line
   while [ "$n" -lt 30 ]; do
-    line="$(ps -eo uid=,ni=,args= | awk -v u="$T_UID" '$1 == u && /Runner\.Listener/ { print $1, $2; exit }')"
+    line="$(ps -eo uid=,ni=,args= | awk -v u="$T_UID" '$1 == u && /Runner\.Listener/ && !seen { print $1, $2; seen = 1 }')"
     if [ -n "$line" ]; then
       [ "$line" = "${T_UID} ${NICE}" ] && return 0
       warn "Runner.Listener runs as uid/nice ${line}, expected ${T_UID} ${NICE}"
@@ -637,7 +637,7 @@ cmd_verify() {
     pf_result WARN "${RUNNER_DIR}/.env and .path: unreadable from this account (${T_HOME} is 700, which is correct); check with sudo lsattr ${RUNNER_DIR}/.env ${RUNNER_DIR}/.path"
   fi
   if systemctl is-active --quiet "$RUNNER_UNIT" 2>/dev/null; then pf_result OK "${RUNNER_UNIT} active"; else pf_result FAIL "${RUNNER_UNIT} not active"; fi
-  line="$(ps -eo uid=,ni=,args= | awk -v u="$T_UID" '$1 == u && /Runner\.Listener/ { print $1, $2; exit }')"
+  line="$(ps -eo uid=,ni=,args= | awk -v u="$T_UID" '$1 == u && /Runner\.Listener/ && !seen { print $1, $2; seen = 1 }')"
   if [ -z "$line" ]; then pf_result FAIL "no Runner.Listener running as uid ${T_UID}"; elif [ "$line" = "${T_UID} ${NICE}" ]; then pf_result OK "Runner.Listener runs as uid ${T_UID} at nice ${NICE}"; else pf_result FAIL "Runner.Listener uid/nice is ${line}"; fi
   if [ "$NETWORK" = 1 ]; then
     if systemctl is-active --quiet "$FIREWALL_UNIT" 2>/dev/null; then pf_result OK "${FIREWALL_UNIT} active"; else pf_result FAIL "${FIREWALL_UNIT} not active"; fi
