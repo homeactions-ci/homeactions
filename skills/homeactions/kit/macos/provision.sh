@@ -130,14 +130,17 @@ tenant_argv() {
 as_tenant() {
   local argv=() l
   while IFS= read -r l; do argv+=("$l"); done < <(tenant_argv)
-  run "${argv[@]}" "$@"
+  show "${argv[@]}" "$@"
+  # From /: the owner's kit folder is closed to the tenant (deny-ACE), and a shell that cannot read its
+  # working directory prints getcwd errors on every step.
+  [ "$DRY" = 1 ] || (cd / && "${argv[@]}" "$@")
 }
 # Quiet variants for checks: never printed, never run in --dry-run (check() returns before them).
 sudo_q() { sudo "$@"; }
 tenant_q() {
   local argv=() l
   while IFS= read -r l; do argv+=("$l"); done < <(tenant_argv)
-  "${argv[@]}" "$@"
+  (cd / && "${argv[@]}" "$@")
 }
 
 # skip_if <test…> -- <cmd…>: idempotent step. Real run: skip when the test passes. Dry run: print.
@@ -240,7 +243,8 @@ tarball_ok() { sudo_q test -f "$TARBALL_PATH" && [ "$(sudo_q shasum -a 256 "$TAR
 runner_extracted() { [ "$(sudo_q cat "$TARBALL_MARKER" 2>/dev/null || true)" = "$RUNNER_SHA" ] && sudo_q test -x "$RUNNER_DIR/config.sh"; }
 dir_present() { sudo_q test -e "$1"; }
 not_present() { ! sudo_q test -e "$1"; }
-dscl_value() { dscl . -read "$1" "$2" 2>/dev/null | awk -v k="$2:" '$1 == k { print $2 }'; }
+# dscl prints native attributes (IsHidden) as "dsAttrTypeNative:<key>: <value>" and standard ones as "<key>: <value>".
+dscl_value() { dscl . -read "$1" "$2" 2>/dev/null | awk -v k="$2:" '{ f = $1; sub(/^dsAttrTypeNative:/, "", f) } f == k { print $2 }'; }
 
 ids_free_or_ours() {
   local u g

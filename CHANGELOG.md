@@ -4,6 +4,11 @@ All notable changes to homeactions are recorded here. The format follows [Keep a
 
 ## [Unreleased]
 
+### Fixed
+- macOS `provision.sh verify` no longer warns that a hidden CI user "is not hidden" (`dscl` prints native attributes with a `dsAttrTypeNative:` prefix).
+- The macOS provisioner and uninstaller start the CI user's commands from `/`, so the install no longer prints `getcwd: Permission denied` once the owner's kit folder is closed to that user.
+- Runbook wording: the uninstaller is run as yourself (it calls `sudo`), not with `sudo bash`.
+
 ## [0.1.3] - 2026-11-12
 
 ### Fixed

@@ -2,7 +2,7 @@
 
 The runner `{{tenant.runnerName}}` runs this repository's CI as the dedicated user `{{tenant.user}}` on a {{#if derived.isMacos}}macOS{{else}}Linux{{/if}} machine, with labels `{{join derived.selfLabels ", "}}`. Jobs switch to it while the repository variable `{{workflows.fallbackVariable}}` is `{{workflows.selfValue}}` (or a PR carries the label `{{workflows.selfLabel}}`), and go back to GitHub-hosted runners otherwise (or with the PR label `{{workflows.hostedLabel}}`).
 
-Who does what: privileged steps (anything with `sudo`) are for {{roles.machineAdmin}}, in their own terminal. Repository settings (variables, runner registration) are for {{roles.repoAdmin}}. A coding agent never runs `sudo` and never asks for a token in chat.
+Who does what: privileged steps (anything with `sudo`) are for {{roles.machineAdmin}}, never for a coding agent. Repository settings (variables, runner registration) are for {{roles.repoAdmin}}. A coding agent never runs `sudo` and never asks for a token in chat.
 
 ## The fallback switch (first aid for anything below)
 
@@ -67,5 +67,5 @@ Runs of closed or merged PRs are not cancelled by GitHub and hold the runner. {{
 ## Uninstall
 
 1. Switch everything to hosted (the fallback switch above), and remove the runner in the repository settings (Settings → Actions → Runners) or let the uninstaller deregister it.
-2. On the machine, in the kit folder you copied there (the `host/` part of the render), {{roles.machineAdmin}} runs `sudo bash uninstall.sh --dry-run`, reads the list, then runs it without `--dry-run`. It removes exactly what `provision.sh` added: the user `{{tenant.user}}`, its group, the service, {{#if derived.isMacos}}the pf anchor, {{else}}the nftables table, {{/if}}`{{tenant.rootDir}}` and the tenant home.
+2. On the machine, in the kit folder you copied there (the `host/` part of the render), {{roles.machineAdmin}} runs `bash uninstall.sh --dry-run` (as themselves: the script calls `sudo` and asks for the password), reads the list, then runs it without `--dry-run`. It removes exactly what `provision.sh` added: the user `{{tenant.user}}`, its group, the service, {{#if derived.isMacos}}the pf anchor, {{else}}the nftables table, {{/if}}`{{tenant.rootDir}}` and the tenant home.
 3. Delete `.homeactions/` and the `homeactions-*.yml` workflows from the repository, and the `{{workflows.fallbackVariable}}` variable.

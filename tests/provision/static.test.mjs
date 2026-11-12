@@ -230,3 +230,23 @@ test("nft -c -f parses the rendered table", { skip: !has("nft") && "nft not inst
   if (/Operation not permitted|permission denied/i.test(res.stderr)) return; // nft -c needs CAP_NET_ADMIN on some kernels
   assert.equal(res.status, 0, res.stderr);
 });
+
+// Regressions from the first real install (2026-11-12).
+test("macOS provisioner: dscl_value reads native attributes (dsAttrTypeNative:IsHidden) as well as standard ones", () => {
+  const r = renderedFixture("two-tenant-mac.json");
+  const fn = read(path.join(r.host, "provision.sh")).split("\n").find((l) => l.startsWith("dscl_value() "));
+  assert.ok(fn, "dscl_value is defined on one line");
+  const script = `dscl() { case "$4" in IsHidden) echo "dsAttrTypeNative:IsHidden: 1" ;; UniqueID) echo "UniqueID: 510" ;; esac; }\n${fn}\nprintf '%s|%s|%s\\n' "$(dscl_value /Users/x IsHidden)" "$(dscl_value /Users/x UniqueID)" "$(dscl_value /Users/x Missing)"`;
+  const res = spawnSync("/bin/bash", ["-c", script], { encoding: "utf8" });
+  assert.equal(res.stdout.trim(), "1|510|", res.stderr);
+});
+
+test("macOS provisioner and uninstaller: tenant commands start from / (the owner's kit folder is closed to the tenant)", () => {
+  const r = renderedFixture("two-tenant-mac.json");
+  for (const s of ["provision.sh", "uninstall.sh"]) {
+    const text = read(path.join(r.host, s));
+    const bodies = [...text.matchAll(/^(as_tenant|tenant_q)\(\) \{\n([\s\S]*?)\n\}/gm)];
+    assert.ok(bodies.length >= 1, `${s}: tenant helpers found`);
+    for (const [, name, body] of bodies) assert.match(body, /\(cd \/ && "\$\{argv\[@\]\}" "\$@"\)/, `${s}: ${name} runs from /`);
+  }
+});

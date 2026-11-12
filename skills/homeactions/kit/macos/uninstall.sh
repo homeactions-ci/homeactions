@@ -90,7 +90,7 @@ tenant_argv() {
 tenant_q() {
   local argv=() l
   while IFS= read -r l; do argv+=("$l"); done < <(tenant_argv)
-  "${argv[@]}" "$@"
+  (cd / && "${argv[@]}" "$@")
 }
 skip_if() {
   local t=()
