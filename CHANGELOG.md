@@ -4,7 +4,11 @@ All notable changes to homeactions are recorded here. The format follows [Keep a
 
 ## [Unreleased]
 
+## [0.1.4] - 2026-11-12
+
 ### Fixed
+- **macOS isolation:** every `isolation.forbiddenReadPaths` directory under `/Users` now gets the CI user's deny-ACE (added by `install`, removed by `uninstall`, checked by `verify`), not only the other admins' homes. macOS computes every local account into the `staff` group, so another user's 750 home owned by group staff was readable by the CI user. The job hook refused to run in that state, so no job ever ran with the gap open.
+- The macOS job hook no longer forbids membership of `staff` (it cannot be avoided on macOS); the deny-ACEs and the forbidden-read check carry that protection.
 - macOS `provision.sh verify` no longer warns that a hidden CI user "is not hidden" (`dscl` prints native attributes with a `dsAttrTypeNative:` prefix).
 - The macOS provisioner and uninstaller start the CI user's commands from `/`, so the install no longer prints `getcwd: Permission denied` once the owner's kit folder is closed to that user.
 - Runbook wording: the uninstaller is run as yourself (it calls `sudo`), not with `sudo bash`.

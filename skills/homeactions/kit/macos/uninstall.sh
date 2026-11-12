@@ -27,6 +27,7 @@ FIREWALL_LABEL='{{derived.firewallLabel}}'
 PF_ANCHOR='{{derived.pfAnchor}}'
 PF_ANCHOR_FILE='{{derived.pfAnchorFile}}'
 OTHER_ADMINS='{{join derived.otherAdmins " "}}'
+FORBIDDEN_READ='{{derived.forbiddenReadSpace}}'
 BANNER='{{derived.banner}}'
 
 DAEMON_PLIST="/Library/LaunchDaemons/${DAEMON_LABEL}.plist"
@@ -126,6 +127,22 @@ admin_home() {
   local h=""
   if [ "$DRY" = 0 ]; then h="$(dscl . -read "/Users/$1" NFSHomeDirectory 2>/dev/null | awk '{ print $2 }')" || h=""; fi
   printf '%s\n' "${h:-/Users/$1}"
+}
+
+# closed_dirs: every directory that gets the tenant's deny-ACE, one per line: each other admin's home, then
+# each isolation.forbiddenReadPaths entry under /Users. macOS computes every local account into `staff`, so
+# a 750 home owned by group staff is readable by the tenant until it carries the ACE.
+closed_dirs() {
+  local a p seen=" "
+  for a in $OTHER_ADMINS; do
+    p="$(admin_home "$a")"
+    case "$seen" in *" $p "*) ;; *) seen="${seen}${p} "; printf '%s\n' "$p" ;; esac
+  done
+  for p in $FORBIDDEN_READ; do
+    case "$p" in /Users/?*) ;; *) continue ;; esac
+    [ "$p" != "$T_HOME" ] || continue
+    case "$seen" in *" $p "*) ;; *) seen="${seen}${p} "; printf '%s\n' "$p" ;; esac
+  done
 }
 under() { case "$1/" in "$2"/*) return 0 ;; esac; return 1; }
 
@@ -261,12 +278,11 @@ main() {
   priv rm -f "$PF_TOKEN_FILE"
 
   say "4/7 remove the deny-ACEs (before the user is deleted, while its name still resolves)"
-  for a in $OTHER_ADMINS; do
-    ah="$(admin_home "$a")"
+  while IFS= read -r ah; do
     if [ "$DRY" = 0 ] && [ ! -d "$ah" ]; then continue; fi
     skip_if no_ace "$ah" -- priv chmod -a "$ACE" "$ah"
     gone "ACE for ${T_USER} on ${ah}" no_ace_left "$ah"
-  done
+  done < <(closed_dirs)
 
   say "5/7 delete the user, its home and its group"
   kill_tenant

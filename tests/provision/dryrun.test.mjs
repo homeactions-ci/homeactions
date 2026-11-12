@@ -275,3 +275,31 @@ test("unknown subcommands and options are refused without running anything", () 
     assert.deepEqual(res.calls, []);
   }
 });
+
+// Regression from the first real install (2026-11-12): macOS computes every local account into `staff`, so
+// (a) the job hook must not forbid that group, and (b) a forbidden read path that is not an admin's home (for
+// example another CI user's 750 home owned by group staff) needs the deny-ACE too, added and removed symmetrically.
+test("macOS: every forbidden read path under /Users gets the deny-ACE on install and loses it on uninstall", () => {
+  const base = loadFixture("two-tenant-mac.json");
+  const profile = { ...base, isolation: { ...base.isolation, forbiddenReadPaths: [...base.isolation.forbiddenReadPaths, "/Users/otherci", "/opt/elsewhere"] } };
+  const r = rendered(profile);
+  const ace = `'user:${profile.tenant.user} deny list,search,readattr,readextattr,readsecurity'`;
+  const install = runScript(path.join(r.host, "provision.sh"), ["install", "--dry-run"]);
+  assert.equal(install.status, 0, install.err);
+  assert.ok(install.out.includes(`+ sudo chmod +a ${ace} /Users/otherci`), install.out);
+  assert.ok(install.out.includes(`? assert: ${profile.tenant.user} cannot list /Users/otherci`));
+  assert.ok(!install.out.includes("/opt/elsewhere"), "no ACE outside /Users");
+  for (const a of profile.host.otherAdmins) assert.equal(install.out.split(`+ sudo chmod +a ${ace} /Users/${a}\n`).length, 2, `${a}: exactly one ACE line`);
+  const un = runScript(path.join(r.host, "uninstall.sh"), ["--dry-run"]);
+  assert.equal(un.status, 0, un.err);
+  assert.ok(un.out.includes(`+ sudo chmod -a ${ace} /Users/otherci`), un.out);
+  assert.equal(install.calls.length + un.calls.length, 0, "dry runs execute nothing");
+});
+
+test("macOS: the hook's forbidden groups do not include staff (every local account is in it)", () => {
+  const r = renderedFixture("two-tenant-mac.json");
+  const conf = readFileSync(path.join(r.host, "conf", "tenant.conf"), "utf8");
+  const line = conf.split("\n").find((l) => l.startsWith("HA_FORBIDDEN_GROUPS="));
+  assert.ok(line && /\badmin\b/.test(line) && /\bwheel\b/.test(line), line);
+  assert.ok(!/\bstaff\b/.test(line), line);
+});

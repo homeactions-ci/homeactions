@@ -49,6 +49,7 @@ OPEN_FILES='{{caps.openFiles}}'
 PORTS='{{derived.portsSpace}}'
 PROBES='{{derived.probesSpace}}'
 OTHER_ADMINS='{{join derived.otherAdmins " "}}'
+FORBIDDEN_READ='{{derived.forbiddenReadSpace}}'
 NETWORK='{{#if isolation.network}}1{{else}}0{{/if}}'
 HAS_POSTGRES='{{#if derived.hasPostgres}}1{{else}}0{{/if}}'
 HAS_REDIS='{{#if derived.hasRedis}}1{{else}}0{{/if}}'
@@ -189,6 +190,22 @@ admin_home() {
     h="$(dscl . -read "/Users/$1" NFSHomeDirectory 2>/dev/null | awk '{ print $2 }')" || h=""
   fi
   printf '%s\n' "${h:-/Users/$1}"
+}
+
+# closed_dirs: every directory that gets the tenant's deny-ACE, one per line: each other admin's home, then
+# each isolation.forbiddenReadPaths entry under /Users. macOS computes every local account into `staff`, so
+# a 750 home owned by group staff is readable by the tenant until it carries the ACE.
+closed_dirs() {
+  local a p seen=" "
+  for a in $OTHER_ADMINS; do
+    p="$(admin_home "$a")"
+    case "$seen" in *" $p "*) ;; *) seen="${seen}${p} "; printf '%s\n' "$p" ;; esac
+  done
+  for p in $FORBIDDEN_READ; do
+    case "$p" in /Users/?*) ;; *) continue ;; esac
+    [ "$p" != "$T_HOME" ] || continue
+    case "$seen" in *" $p "*) ;; *) seen="${seen}${p} "; printf '%s\n' "$p" ;; esac
+  done
 }
 
 refuse_unsafe() {
@@ -364,9 +381,11 @@ cmd_preflight() {
     *"is Off"*) pf_result OK "FileVault is off (profile says ${DISK_ENCRYPTION})" ;;
     *) pf_result WARN "FileVault status unreadable" ;;
   esac
-  for a in $OTHER_ADMINS; do
-    ah="$(admin_home "$a")"
-    if [ -d "$ah" ]; then pf_result OK "${a}'s home ${ah} will get a deny-ACE for ${T_USER}"; else pf_result WARN "${a} has no home at ${ah}"; fi
+  while IFS= read -r ah; do
+    if [ -d "$ah" ]; then pf_result OK "${ah} will get a deny-ACE for ${T_USER}"; else pf_result WARN "${ah} does not exist (no ACE to add)"; fi
+  done < <(closed_dirs)
+  for ah in $FORBIDDEN_READ; do
+    case "$ah" in /Users/?*) ;; *) pf_result WARN "${ah} is outside /Users: no deny-ACE is added there; the job hook still refuses to run if ${T_USER} can read it" ;; esac
   done
   case " $OTHER_ADMINS " in
     *" $(id -un) "*) ;;
@@ -407,15 +426,14 @@ cmd_install() {
   priv chown "${T_USER}:${T_GROUP}" "$T_HOME"
   priv chmod 700 "$T_HOME"
 
-  say "2/7 deny-ACE on every other admin's home"
-  for a in $OTHER_ADMINS; do
-    ah="$(admin_home "$a")"
+  say "2/7 deny-ACE on every other admin's home and every forbidden read path"
+  while IFS= read -r ah; do
     if [ "$DRY" = 0 ] && [ ! -d "$ah" ]; then
-      warn "${a} has no home at ${ah}; skipping its ACE"
+      warn "${ah} does not exist; skipping its ACE"
       continue
     fi
     skip_if has_ace "$ah" -- priv chmod +a "$ACE" "$ah"
-  done
+  done < <(closed_dirs)
 
   say "3/7 identity assertions"
   check "${T_USER}'s home is ${T_UID}:${T_GID} mode 700" home_locked
@@ -425,11 +443,10 @@ cmd_install() {
   check "${T_USER} is not in com.apple.access_ssh" not_member com.apple.access_ssh
   check "${T_USER} has no secure token" no_secure_token
   check "${T_USER} has no ~/.ssh" no_ssh_dir
-  for a in $OTHER_ADMINS; do
-    ah="$(admin_home "$a")"
+  while IFS= read -r ah; do
     [ "$DRY" = 1 ] || [ -d "$ah" ] || continue
     check "${T_USER} cannot list ${ah}" tenant_cannot_list "$ah"
-  done
+  done < <(closed_dirs)
 
   say "4/7 tenant directories (.noindex keeps them out of Spotlight)"
   as_tenant /bin/mkdir -p "$RUNNER_DIR" "$TMP_DIR" "$CACHE_DIR" "$OPT_DIR" "$SRC_DIR" "$STATE_DIR" "$LOG_DIR"
@@ -690,14 +707,13 @@ cmd_verify() {
   else
     v_result FAIL "${T_HOME}: absent or unreadable"
   fi
-  for a in $OTHER_ADMINS; do
-    ah="$(admin_home "$a")"
+  while IFS= read -r ah; do
     if acl="$(/bin/ls -led "$ah" 2>/dev/null)"; then
       if printf '%s\n' "$acl" | grep -F -c "user:${T_USER} deny list,search" >/dev/null; then v_result OK "deny-ACE for ${T_USER} on ${ah}"; else v_result FAIL "no deny-ACE for ${T_USER} on ${ah}"; fi
     else
       v_result WARN "${ah}: ACL unreadable from this account (not the same as absent)"
     fi
-  done
+  done < <(closed_dirs)
   for f in "$ROOT_DIR" "$HOOKS_DIR" "$HOOKS_DIR/lib.sh" "$HOOKS_DIR/job-started.sh" "$HOOKS_DIR/job-completed.sh" "$CONF_FILE"; do
     if st="$(stat -f '%u %Sp' "$f" 2>/dev/null)"; then
       case "$st" in

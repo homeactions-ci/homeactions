@@ -6,7 +6,7 @@ What keeps CI jobs away from the rest of the machine, and what does not. The own
 
 | Layer | macOS | Linux (beta) | Profile fields |
 |---|---|---|---|
-| **A dedicated CI user** | own group; hidden (UID below 500); not admin, not staff; no ssh login; no secure token (cannot unlock FileVault) | system user (`useradd -r`), own group, no login shell, not in `sudo`/`wheel` | `tenant.user`, `group`, `uid`, `gid`, `home` |
+| **A dedicated CI user** | own group; hidden; not admin; no ssh login; a deny-ACE on every other admin's home and every forbidden read path (macOS computes every local account into `staff`, so group-readable homes need it); no secure token (cannot unlock FileVault) | system user (`useradd -r`), own group, no login shell, not in `sudo`/`wheel` | `tenant.user`, `group`, `uid`, `gid`, `home` |
 | **The runner daemon runs as that user** | a LaunchDaemon generated from the runner's own template (not `svc.sh install`, which makes a LaunchAgent that dies without a login session), `UserName` = tenant | a hardened systemd unit: `User=`, `NoNewPrivileges=yes`, `ProtectSystem=strict`, `ReadWritePaths=` the tenant home only, `PrivateTmp=yes`, `Nice=`, `IOSchedulingClass=idle`, `LimitNOFILE=` | `tenant.labelPrefix`, `caps.*` |
 | **Root-owned hooks and config** | `ACTIONS_RUNNER_HOOK_JOB_STARTED/COMPLETED` point at scripts under `rootDir`, owned by root, not writable by the tenant | same | `tenant.rootDir` |
 | **Immutable runner env** | the runner's `.env` and `.path` are root-owned and flagged immutable (`chflags uchg`), so a job cannot redirect the hooks or `PATH` | `chattr +i` | — |
