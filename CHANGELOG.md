@@ -4,6 +4,8 @@ All notable changes to homeactions are recorded here. The format follows [Keep a
 
 ## [Unreleased]
 
+## [0.1.6] - 2026-11-12
+
 ### Fixed
 - `provision.sh verify` (and the register check) no longer stop silently after "runner loaded": the listener lookup piped `ps` into an awk that exited early, and under `set -euo pipefail` the resulting SIGPIPE aborted the script before the firewall checks. Found on the first real install.
 
