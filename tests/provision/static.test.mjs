@@ -126,6 +126,10 @@ test("pf anchor: every rule carries `user <tenant>`, nothing machine-wide, the p
   assert.deepEqual(table[1].split(/,\s*/), r.profile.isolation.privateRanges);
   assert.ok(rules.some((l) => /^pass out quick on lo0 proto tcp from any to any port \$tenant_ports /.test(l)), "loopback pass to own ports");
   assert.ok(rules.some((l) => /^pass out quick on lo0 proto tcp from any port \$tenant_ports to any /.test(l)), "loopback pass from own ports");
+  // Regression (first real install, 2026-11-12): the reply pass must be stateless. A stateful pass only matches
+  // the opening SYN (flags S/SA), so the listener's SYN-ACK hit the block and the tenant's own Postgres timed out.
+  assert.ok(rules.some((l) => /^pass out quick on lo0 proto tcp from any port \$tenant_ports to any user \S+ no state$/.test(l)), "the reply pass from own ports is stateless");
+  assert.ok(rules.some((l) => /^pass out quick on lo0 proto tcp from any to any port \$tenant_ports user \S+ keep state$/.test(l)), "the connect pass to own ports keeps state");
   assert.ok(rules.some((l) => /^block return out quick on lo0 /.test(l)), "other loopback blocked");
   assert.ok(rules.some((l) => /to <tenant_private> port 53 /.test(l) && l.startsWith("pass")), "DNS to private allowed");
   assert.ok(rules.some((l) => /^block return out quick proto \{ tcp, udp \} from any to <tenant_private> /.test(l)), "private blocked");

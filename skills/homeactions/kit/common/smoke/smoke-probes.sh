@@ -96,6 +96,23 @@ if [ -n "$HA_REDIS_BIN" ]; then
   svc_loopback redis "$HA_REDIS_PORT"
 fi
 
+# Own loopback: the tenant must reach a listener of its own on a tenant port (the network rules allow
+# exactly that; a rule set that blocks the listener's replies makes every per-job database unreachable).
+self_port="${HA_PORTS%% *}"
+if [ -n "$(tcp_listen_table | listeners_on_ports "$self_port")" ]; then
+  info own-loopback "port $self_port is busy; skipped"
+else
+  nc -l 127.0.0.1 "$self_port" >/dev/null 2>&1 &
+  self_pid=$!
+  self_ok=0
+  for _ in 1 2 3 4 5 6 7 8 9 10; do
+    if nc -z -w 2 127.0.0.1 "$self_port" >/dev/null 2>&1; then self_ok=1; break; fi
+    sleep 0.3
+  done
+  kill "$self_pid" 2>/dev/null; wait "$self_pid" 2>/dev/null
+  if [ "$self_ok" = 1 ]; then pass own-loopback "127.0.0.1:$self_port reachable from $(id -un)"; else fail own-loopback "cannot connect to this user's own listener on 127.0.0.1:$self_port (network rules block the tenant's loopback)"; fi
+fi
+
 # Inbound probe (dispatch input inbound_probe_seconds): for N seconds listen on the first tenant port on
 # ALL interfaces, so the owner can prove from ANOTHER machine that nothing off-box can connect
 # (`nc -z -w 3 <this-host> <port>` must fail while the window is open). The listener is gone before the

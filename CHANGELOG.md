@@ -4,6 +4,14 @@ All notable changes to homeactions are recorded here. The format follows [Keep a
 
 ## [Unreleased]
 
+## [0.1.5] - 2026-11-12
+
+### Fixed
+- **macOS network rules:** the CI user can reach its own loopback listeners again. The pass rule for a listener's replies was stateful, and a stateful pf rule only matches the opening SYN, so every reply was blocked and per-job Postgres (or a dev server) timed out. The reply rule is now stateless. Re-run `provision.sh firewall` after upgrading.
+
+### Added
+- The smoke probes test that the CI user can connect to its own listener on a tenant port.
+
 ## [0.1.4] - 2026-11-12
 
 ### Fixed
