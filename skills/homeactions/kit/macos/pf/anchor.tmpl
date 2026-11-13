@@ -10,11 +10,14 @@ table <tenant_private> const { {{join isolation.privateRanges ", "}} }
 
 # 1. Loopback and this host's own addresses (macOS delivers both over lo0): the tenant's own ports
 #    only. Two passes, because each loopback packet crosses lo0 and the listener's replies leave from
-#    a tenant port. The reply pass is stateless on purpose: a stateful pass only matches the opening
-#    SYN (pf's default `flags S/SA`), so the listener's SYN-ACK would fall through to the block below
-#    and the tenant could never reach its own Postgres or dev server. Every other local service (sshd,
-#    adb, other users' dev servers, system daemons) answers the tenant with a reset.
-pass out quick on lo0 proto tcp from any to any port $tenant_ports user {{tenant.user}} keep state
+#    a tenant port. Both passes are stateless on purpose. A stateful pass only matches the opening
+#    SYN (pf's default `flags S/SA`), so a stateful reply pass let the listener's SYN-ACK fall through
+#    to the block below. And a state on lo0 sees every packet twice (out, then in), so its sequence
+#    tracking can drop a packet silently: the tenant's own connections then hang at random (a page's
+#    script request, a burst of Postgres connections). Stateless passes match on user and port only,
+#    which is no wider than the stateful ones were. Every other local service (sshd, adb, other users'
+#    dev servers, system daemons) answers the tenant with a reset.
+pass out quick on lo0 proto tcp from any to any port $tenant_ports user {{tenant.user}} no state
 pass out quick on lo0 proto tcp from any port $tenant_ports to any user {{tenant.user}} no state
 block return out quick on lo0 proto { tcp, udp } from any to any user {{tenant.user}}
 

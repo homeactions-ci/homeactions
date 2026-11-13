@@ -4,6 +4,9 @@ All notable changes to homeactions are recorded here. The format follows [Keep a
 
 ## [Unreleased]
 
+### Fixed
+- **macOS network rules:** the CI user's connections to its own loopback listeners no longer hang at random. The pass rule for connections to a tenant port kept state, and a pf state on the loopback interface sees every packet twice, so its sequence tracking could drop one silently: bursts of Postgres connections timed out and browser requests to the tenant's own dev server stalled. Both loopback pass rules are now stateless; they match on the CI user and the tenant ports only, as before. Re-run `provision.sh firewall` after upgrading.
+
 ## [0.1.6] - 2026-11-12
 
 ### Fixed
